@@ -20,10 +20,10 @@ const mysql = require("mysql");
 // })
 
 const connection = mysql.createConnection({
-  host: "rds-mysql-10mintutorial.cqiv4llmmhyd.ca-central-1.rds.amazonaws.com",
-  user: "admin",
+  host: "stockmarketapp.cqiv4llmmhyd.ca-central-1.rds.amazonaws.com",
+  user: "itsui",
   password: "$Cherry7",
-  database: "firstDB",
+  database: "stockMarketApp",
 });
 
 const app = express();
