@@ -6,10 +6,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Watchlist from "./pages/Watchlist";
 import Trending from "./pages/Trending";
+import LoginPage from "./pages/LoginPage";
+import RegistrationPage from "./pages/RegistrationPage";
 
 function App() {
-  const [users, setUsers] = useState([]);
-
   /*
     Uncomment lines 12-25 once you've configured your backend/server.js file
   */
@@ -53,7 +53,9 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" exact Component={Home} />
+          <Route path="/register" Component={RegistrationPage} />
+          <Route path="/login" Component={LoginPage} />
+          <Route path="/" Component={Home} />
           <Route path="/watchlist" Component={Watchlist} />
           <Route path="/trending" Component={Trending} />
         </Routes>
