@@ -2,7 +2,12 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import config from "./config";
 import Navbar from "./components/Navbar";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Home from "./pages/Home";
 import Watchlist from "./pages/Watchlist";
 import Trending from "./pages/Trending";
@@ -10,9 +15,18 @@ import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
 
 function App() {
-  /*
-    Uncomment lines 12-25 once you've configured your backend/server.js file
-  */
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const handleLogin = () => {
+    setIsAuthenticated(true);
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+  };
+
+  useEffect(() => {
+    console.log("isAuthenticated:", isAuthenticated);
+  }, [isAuthenticated]);
 
   // const getCurrentUsers = () => {
   //   // Make a GET request to backend at members endpoint
@@ -49,18 +63,21 @@ function App() {
   //   </div>
   // );
   return (
-    <>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/register" Component={RegistrationPage} />
-          <Route path="/login" Component={LoginPage} />
-          <Route path="/" Component={Home} />
-          <Route path="/watchlist" Component={Watchlist} />
-          <Route path="/trending" Component={Trending} />
-        </Routes>
-      </Router>
-    </>
+    <Router>
+      {isAuthenticated && <Navbar onLogout={handleLogout} />}
+      <Routes>
+        <Route
+          path="/"
+          element={
+            isAuthenticated ? <Home /> : <Navigate to="/login" replace />
+          }
+        />
+        <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
+        <Route path="/register" element={<RegistrationPage />} />
+        <Route path="/watchlist" element={<Watchlist />} />
+        <Route path="/trending" element={<Trending />} />
+      </Routes>
+    </Router>
   );
 }
 

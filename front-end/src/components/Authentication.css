@@ -1,0 +1,70 @@
+.authentication-form-container {
+  min-height: 100vh;
+  background-image: url("../images/authenticationBG.png");
+  background-size: cover;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  color: #000;
+}
+
+.authentication-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: auto;
+  background-color: #000;
+  height: auto;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.title-page {
+  text-align: center;
+  color: whitesmoke;
+  font-weight: bold;
+  font-size: xx-large;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.authentication-type {
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+  text-align: left;
+  color: whitesmoke;
+  font-size: x-large;
+}
+
+.submit-button,
+.input-field {
+  padding-top: 0.5rem;
+  padding-bottom: 0.25rem;
+}
+
+.user-input,
+.generic-button {
+  border-color: whitesmoke;
+  background-color: black;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: whitesmoke;
+}
+
+.user-input {
+  border-color: whitesmoke;
+  background-color: white;
+  color: black;
+}
+
+.user-msg {
+  color: whitesmoke;
+  padding-bottom: 20px;
+}
+
+.authentication-error {
+  color: red;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

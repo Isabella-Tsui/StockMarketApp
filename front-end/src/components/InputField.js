@@ -2,9 +2,9 @@ import React from "react";
 
 const InputField = (props) => {
   return (
-    <div className="inputField">
+    <div className="input-field">
       <input
-        className="userInput"
+        className="user-input"
         type={props.type}
         placeholder={props.placeholder}
         value={props.value}

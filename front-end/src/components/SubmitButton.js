@@ -2,9 +2,9 @@ import React from "react";
 
 const SubmitButton = (props) => {
   return (
-    <div className="submitButton">
+    <div className="submit-button">
       <button
-        className="genericButton"
+        className="generic-button"
         disabled={props.disabled}
         onClick={props.onClick}
       >
