@@ -1,11 +1,13 @@
 import React from "react";
+import Navbar from "../components/Navbar";
 
-function Home() {
+export default function Home({ isAuthenticated }) {
   return (
-    <div className="home">
-      <h1>Home</h1>
-    </div>
+    <>
+      {isAuthenticated}
+      <div className="home">
+        <h1>Home</h1>
+      </div>
+    </>
   );
 }
-
-export default Home;

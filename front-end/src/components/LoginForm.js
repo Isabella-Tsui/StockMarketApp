@@ -4,7 +4,7 @@ import SubmitButton from "./SubmitButton";
 import { useNavigate } from "react-router-dom";
 import "./Authentication.css";
 
-const LoginForm = ({ onLogin }) => {
+const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [buttonDisabled, setButtonDisabled] = useState(false);
@@ -56,8 +56,8 @@ const LoginForm = ({ onLogin }) => {
       console.log("result.success: ", result.success);
 
       if (result && result.success) {
-        onLogin();
-        navigate("/");
+        sessionStorage.setItem("isAuthenticated", "true");
+        window.location.href = "/";
       } else if (result && result.success === false) {
         resetLoginForm();
         setLoginError(result.msg);

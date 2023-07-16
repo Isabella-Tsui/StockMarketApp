@@ -1,11 +1,13 @@
 import React from "react";
+import Navbar from "../components/Navbar";
 
-function Trending() {
+export default function Trending({ isAuthenticated }) {
   return (
-    <div className="trending">
-      <h1>Trending</h1>
-    </div>
+    <>
+      {isAuthenticated}
+      <div className="trending">
+        <h1>Trending</h1>
+      </div>
+    </>
   );
 }
-
-export default Trending;

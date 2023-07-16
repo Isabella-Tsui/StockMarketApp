@@ -1,11 +1,13 @@
 import React from "react";
+import Navbar from "../components/Navbar";
 
-function Watchlist() {
+export default function Watchlist({ isAuthenticated }) {
   return (
-    <div className="watchlist">
-      <h1>Watchlist</h1>
-    </div>
+    <>
+      {isAuthenticated}
+      <div className="watchlist">
+        <h1>Watchlist</h1>
+      </div>
+    </>
   );
 }
-
-export default Watchlist;
