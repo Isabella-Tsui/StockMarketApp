@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../components/Navbar";
+import "./Watchlist.css";
 
 export default function Watchlist({ isAuthenticated }) {
   return (
@@ -7,6 +7,21 @@ export default function Watchlist({ isAuthenticated }) {
       {isAuthenticated}
       <div className="watchlist">
         <h1>Watchlist</h1>
+        <div className="container">
+          <div className="rows">
+            <p className="title">Title</p>
+            <p className="value">Value</p>
+          </div>
+          <div className="rows">
+            <p className="title">Title</p>
+            <p className="value">Value</p>
+          </div>
+          <div className="rows">
+            <p className="title">Title</p>
+            <p className="value">Value</p>
+          </div>
+          <button>Remove from watchlist</button>
+        </div>
       </div>
     </>
   );

@@ -1,8 +1,10 @@
+// TradingViewWidget.jsx
+
 import React, { useEffect, useRef } from "react";
 
 let tvScriptLoadingPromise;
 
-export default function TradingViewChartWidget() {
+export default function TradingViewWidget() {
   const onLoadScriptRef = useRef();
 
   useEffect(() => {
@@ -75,17 +77,3 @@ export default function TradingViewChartWidget() {
     </div>
   );
 }
-
-// import React, { useEffect } from "react";
-// import { AdvancedRealTimeChart } from "react-ts-tradingview-widgets";
-
-// //This is the link with the react embed
-// //https://www.tradingview.com/widget/advanced-chart/
-
-// const TradingViewWidget = () => {
-//   return <AdvancedRealTimeChart theme="dark" autosize></AdvancedRealTimeChart>; //   useEffect(() => {
-// };
-
-// export default TradingViewWidget;
-
-// TradingViewWidget.jsx

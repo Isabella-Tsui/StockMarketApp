@@ -13,6 +13,7 @@ import Watchlist from "./pages/Watchlist";
 import Trending from "./pages/Trending";
 import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
+import SearchPage from "./pages/SearchPage";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(
@@ -45,6 +46,10 @@ function App() {
         <Route
           path="/register"
           element={<RegistrationPage isAuthenticated={isAuthenticated} />}
+        />
+        <Route
+          path="/searchPage"
+          element={<SearchPage isAuthenticated={isAuthenticated} />}
         />
         <Route
           path="/watchlist"

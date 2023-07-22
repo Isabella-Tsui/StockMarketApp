@@ -1,0 +1,75 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 50px;
+  background-color: greenyellow;
+}
+
+.buttons {
+  display: flex;
+  gap: 30px;
+}
+
+.buttons .button {
+  width: 100px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  background-color: purple;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 50px;
+  background-color: whitesmoke;
+}
+
+.card {
+  display: flex;
+  gap: 20px;
+  padding: 0px 40px;
+  align-self: flex-start;
+  border-bottom: 2px solid black;
+  width: 100%;
+}
+
+.active {
+  background-color: plum;
+  color: white;
+  width: 100px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.add-to-watch-list {
+  background-color: plum;
+  color: white;
+  border-radius: 50%;
+  border: none;
+  align-self: center;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 30px;
+}
+
+.add-to-watch-list:hover {
+  background-color: blueviolet;
+  color: white;
+}

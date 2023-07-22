@@ -1,0 +1,39 @@
+.watchlist {
+  margin: 20px 20px 20px 20px;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: aliceblue;
+  box-shadow: 0 0 10px #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 50px;
+  background-color: white;
+  width: 60%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+button {
+  padding: 0px 20px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+}

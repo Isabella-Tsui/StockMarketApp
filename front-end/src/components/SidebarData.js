@@ -22,4 +22,10 @@ export const SidebarData = [
     icon: <PiIcons.PiBinocularsBold />,
     className: "nav-text",
   },
+  {
+    title: "SearchPage",
+    path: "/searchPage",
+    icon: <PiIcons.PiBinocularsBold />,
+    className: "nav-text",
+  },
 ];
