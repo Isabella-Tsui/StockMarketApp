@@ -2,16 +2,16 @@ import React from 'react'
 import styles from './Home.module.css'
 import { Divider } from 'antd'
 import * as FaIcons from 'react-icons/fa'
-import { useNavigate } from 'react-router-dom'
 
-export default function WatchList({ isAuthenticated }) {
-  const navigate = useNavigate()
+export default function WishList({ isAuthenticated }) {
   return (
     <>
       {isAuthenticated}
       <div className={styles.home}>
         <div className={styles.container}>
-          <h1>Your WatchList</h1>
+          <h1>
+            Your WishList <span>♥</span>{' '}
+          </h1>
           <Divider
             size='large'
             style={{
@@ -26,28 +26,18 @@ export default function WatchList({ isAuthenticated }) {
             <ul>
               <li>
                 <div className={styles.wishListData}>
-                  <h3>Watch List 1</h3>
+                  <h3>MSFT</h3>
+                  <p>Microsoft Corporation</p>
                 </div>
 
                 <div className={styles.icons}>
-                  <FaIcons.FaEye
-                    onClick={() => {
-                      navigate('/wishlist')
-                    }}
+                  <FaIcons.FaTrashAlt
                     style={{
-                      // blue color
-                      color: '#0000ff',
+                      // red color
+                      color: '#ff0000',
                     }}
                   />
-                </div>
-              </li>
 
-              <li>
-                <div className={styles.wishListData}>
-                  <h3>Watch List 1</h3>
-                </div>
-
-                <div className={styles.icons}>
                   <FaIcons.FaEye
                     style={{
                       // blue color
@@ -56,13 +46,42 @@ export default function WatchList({ isAuthenticated }) {
                   />
                 </div>
               </li>
-
               <li>
                 <div className={styles.wishListData}>
-                  <h3>Watch List 1</h3>
+                  <h3>MSFT</h3>
+                  <p>Microsoft Corporation</p>
                 </div>
 
                 <div className={styles.icons}>
+                  <FaIcons.FaTrashAlt
+                    style={{
+                      // red color
+                      color: '#ff0000',
+                    }}
+                  />
+
+                  <FaIcons.FaEye
+                    style={{
+                      // blue color
+                      color: '#0000ff',
+                    }}
+                  />
+                </div>
+              </li>
+              <li>
+                <div className={styles.wishListData}>
+                  <h3>MSFT</h3>
+                  <p>Microsoft Corporation</p>
+                </div>
+
+                <div className={styles.icons}>
+                  <FaIcons.FaTrashAlt
+                    style={{
+                      // red color
+                      color: '#ff0000',
+                    }}
+                  />
+
                   <FaIcons.FaEye
                     style={{
                       // blue color

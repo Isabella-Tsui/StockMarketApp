@@ -1,67 +1,72 @@
-import { useState, useEffect } from "react";
-import "./App.css";
-import config from "./config";
-import Navbar from "./components/Navbar";
+import { useState, useEffect } from 'react'
+import './App.css'
+import Navbar from './components/Navbar'
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
-} from "react-router-dom";
-import Home from "./pages/Home";
-import Watchlist from "./pages/Watchlist";
-import Trending from "./pages/Trending";
-import LoginPage from "./pages/LoginPage";
-import RegistrationPage from "./pages/RegistrationPage";
-import SearchPage from "./pages/SearchPage";
+} from 'react-router-dom'
+import Home from './pages/Home'
+import WishList from './pages/WishList'
+import WatchList from './pages/WatchList.js'
+import Trending from './pages/Trending'
+import LoginPage from './pages/LoginPage'
+import RegistrationPage from './pages/RegistrationPage'
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(
-    () => sessionStorage.getItem("isAuthenticated") === "true"
-  );
+    () => sessionStorage.getItem('isAuthenticated') === 'true'
+  )
+
+  console.log(isAuthenticated)
 
   const handleLogout = () => {
-    setIsAuthenticated(false);
-  };
+    setIsAuthenticated(false)
+  }
 
   useEffect(() => {
-    console.log("isAuthenticated:", isAuthenticated);
-  }, [isAuthenticated]);
+    console.log('isAuthenticated:', isAuthenticated)
+  }, [isAuthenticated])
 
   return (
     <Router>
       {isAuthenticated && <Navbar onLogout={handleLogout} />}
       <Routes>
         <Route
-          path="/"
+          path='/'
           element={
             isAuthenticated ? (
               <Home isAuthenticated={isAuthenticated} />
             ) : (
-              <Navigate to="/login" replace />
+              <Navigate to='/login' replace />
             )
           }
         />
-        <Route path="/login" element={<LoginPage />} />
         <Route
-          path="/register"
+          path='/login'
+          element={<LoginPage setIsAuthenticated={setIsAuthenticated} />}
+        />
+        <Route
+          path='/register'
           element={<RegistrationPage isAuthenticated={isAuthenticated} />}
         />
+
         <Route
-          path="/searchPage"
-          element={<SearchPage isAuthenticated={isAuthenticated} />}
+          path='/wishList'
+          element={<WishList isAuthenticated={isAuthenticated} />}
         />
         <Route
-          path="/watchlist"
-          element={<Watchlist isAuthenticated={isAuthenticated} />}
+          path='/watchList'
+          element={<WatchList isAuthenticated={isAuthenticated} />}
         />
         <Route
-          path="/trending"
+          path='/trending'
           element={<Trending isAuthenticated={isAuthenticated} />}
         />
       </Routes>
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App

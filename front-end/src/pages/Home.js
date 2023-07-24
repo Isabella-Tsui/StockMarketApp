@@ -1,94 +1,66 @@
-import React, { useState, useEffect } from "react";
-import "./Home.css";
+import React, { useState } from 'react'
+import Input from '../components/Input'
+import QuoteCard from '../components/QuoteCard'
+import styles from './Home.module.css'
+import CompanyData from '../components/CompanyData'
+import Chart from '../components/Chart'
+import AddToWatchList from './AddToWatchList'
+import { Button, Typography, Modal } from 'antd'
 
 export default function Home({ isAuthenticated }) {
-  const [activeData, setActiveData] = useState([]);
-  const [gainersData, setGainersData] = useState([]);
-  const [losersData, setLosersData] = useState([]);
-  const [loading, setLoading] = useState([false]);
-  const [toggle, setToggle] = useState(true);
-
-  //call api from here
-  useEffect(() => {
-    const fetchActiveData = async () => {
-      setLoading(true);
-
-      //Demo API key in use need to change later
-      const response = await fetch(
-        "https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=demo"
-      );
-
-      const data = await response.json();
-      setGainersData(data.top_gainers);
-      setLosersData(data.top_losers);
-      setActiveData(data.top_gainers);
-
-      console.log(data);
-      setLoading(false);
-    };
-
-    fetchActiveData();
-  }, []);
-
-  //To switch between the losers and gainers data
-  const hangleToggle = () => {
-    setToggle(!toggle);
-    if (toggle) {
-      setActiveData(losersData);
-    } else {
-      setActiveData(gainersData);
-    }
-  };
-
-  //Add to watch list handler
-
-  const handleAddToWatchlist = (data) => {
-    console.log("add to watchlist", data);
-  };
+  const [quoteText, setQuoteText] = useState('AAPL')
+  const [modal2Open, setModal2Open] = useState(false) // dependency for modal
 
   return (
     <>
       {isAuthenticated}
-      <div className="home">
-        <h1>Trending</h1>
-        <div className="buttons">
-          <button
-            className={toggle ? "active" : "button"}
-            onClick={hangleToggle}
+      <div className={styles.home}>
+        <Input setQuoteText={setQuoteText} />
+
+        <div className={styles.wishList}>
+          <div></div>
+          <Button
+            type='primary'
+            style={{
+              margin: '0px 16px',
+              boxShadow: '0 4px 8px 0 rgba(0,0,0,0.1)',
+              backgroundColor: '#f5f5f5',
+              color: '#000000',
+              borderColor: '#f5f5f5',
+            }}
+            onClick={() => {
+              setModal2Open(true)
+            }}
           >
-            Gainers
-          </button>
-          <button
-            className={!toggle ? "active" : "button"}
-            onClick={hangleToggle}
-          >
-            Losers
-          </button>
+            Add to Watch List
+          </Button>
+        </div>
+        <div className={styles.stocksDetail}>
+          <div className={styles.left}>
+            <Typography.Title level={3}>Stock Details</Typography.Title>
+            <QuoteCard quoteText={quoteText} />
+          </div>
+
+          <div className={styles.right}>
+            <Typography.Title level={3}>Company Details</Typography.Title>
+            <CompanyData quoteText={quoteText} />
+          </div>
         </div>
 
-        {loading && <p>Loading...</p>}
-        {!loading && (
-          <div className="container">
-            {activeData.map((data) => (
-              <div className="card">
-                <p>{data.ticker}</p>
-                <p>{data.price}</p>
-                <p>{data.change_amount}</p>
-                <p>{data.change_percentage}</p>
-                <p>{data.volume}</p>
-                <button
-                  className="add-to-watch-list"
-                  onClick={() => {
-                    handleAddToWatchlist(data);
-                  }}
-                >
-                  +
-                </button>
-              </div>
-            ))}
-          </div>
-        )}
+        <div class={styles.chart}>
+          <Chart quoteText={quoteText} />
+        </div>
       </div>
+
+      <Modal
+        title='Add to Watch List'
+        centered
+        open={modal2Open}
+        onOk={() => setModal2Open(false)}
+        onCancel={() => setModal2Open(false)}
+      >
+        <AddToWatchList />
+      </Modal>
     </>
-  );
+  )
 }

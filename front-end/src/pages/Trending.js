@@ -1,5 +1,5 @@
 import React from "react";
-import TradingViewWidget from "../components/TradingViewWidget";
+import Navbar from "../components/Navbar";
 
 export default function Trending({ isAuthenticated }) {
   return (
@@ -7,7 +7,6 @@ export default function Trending({ isAuthenticated }) {
       {isAuthenticated}
       <div className="trending">
         <h1>Trending</h1>
-        <TradingViewWidget />
       </div>
     </>
   );

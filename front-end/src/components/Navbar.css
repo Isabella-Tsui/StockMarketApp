@@ -70,3 +70,8 @@
 span {
   margin-left: 16px;
 }
+
+/* Show it at top of each component */
+.sideBarr {
+  z-index: -999;
+}

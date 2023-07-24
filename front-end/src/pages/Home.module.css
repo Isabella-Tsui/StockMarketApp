@@ -1,0 +1,279 @@
+.home {
+  background-color: rgb(47, 47, 249);
+  min-height: 100vh;
+  margin: 0;
+  padding-top: 20px;
+}
+.search {
+  background-color: white;
+  margin-left: 10px;
+  padding: 5px;
+  width: 430px;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+}
+
+.search input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background-color: transparent;
+}
+.search button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.search button:hover {
+  background-color: #ddd;
+  transform: scale(0.9);
+}
+
+.searchResults {
+  background-color: white;
+  width: 425px;
+  position: absolute;
+  top: 51;
+  left: 10;
+  margin-left: 18px;
+  border-radius: 2px;
+  border-top: 1px solid black;
+  transition: 850ms;
+
+  max-height: 200px;
+  overflow: scroll;
+  overflow-x: none;
+}
+
+.searchResults ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.searchResults ul li {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  padding-right: 20px;
+  border-bottom: 1px solid black;
+}
+.searchBtn {
+  background-color: rgb(180, 178, 178) !important;
+}
+.searchBtn:hover {
+  background-color: #ddd !important;
+}
+
+.searchResults ul li:hover {
+  background-color: rgb(228, 227, 227);
+  cursor: pointer;
+}
+
+/* Stock Details */
+
+.stocksDetail {
+  margin: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  background-color: white;
+}
+.left,
+.right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left ul,
+.right ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.left ul li,
+.right ul li {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  padding-right: 20px;
+  border-bottom: 1px solid black;
+}
+
+.wishList {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* WishList Styles */
+.container {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  margin: 10px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+}
+.container h1 {
+  margin: 0;
+  padding: 0;
+
+  color: rgb(47, 47, 249);
+}
+.container h1 span {
+  color: red;
+  font-size: 30px;
+}
+
+.wishList ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.wishList ul li {
+  margin: 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  padding-right: 20px;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.icons {
+  background-color: transparent;
+  display: flex;
+
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100px;
+}
+.icons > * {
+  font-size: 20px;
+  cursor: pointer;
+}
+/* hover effect */
+.wishList ul li:hover {
+  background-color: rgb(228, 227, 227);
+  cursor: pointer;
+}
+.icons > *:hover {
+  transform: scale(0.9);
+}
+
+.chartContainer {
+  margin: 10px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+}
+.chart {
+  margin-top: 40px;
+  height: 400px;
+}
+.addtoWatchList {
+  background-color: rgb(255, 255, 255) !important;
+  border: 1px solid black;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  flex-direction: column;
+}
+
+.addtoWatchList button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  background-color: rgb(56, 221, 6);
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 5px 20px;
+
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+.addtoWatchList button:hover {
+  background-color: rgb(0, 255, 0);
+  transform: scale(0.9);
+}
+
+.addtoWatchList ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.addtoWatchList ul li button,
+.addWatchList button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  background-color: rgb(47, 47, 249);
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 5px 10px;
+  padding-right: 20px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+
+  width: 100%;
+  text-align: left;
+}
+.addtoWatchList ul li button:hover,
+.addWatchList button {
+  background-color: rgb(0, 0, 255);
+  transform: scale(0.9);
+}
+
+.newWatchList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 10px;
+  gap: 20px;
+}
+
+.addWatchList input {
+  padding: 5px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background-color: transparent;
+  border-bottom: 1px solid black;
+  width: 100%;
+}
