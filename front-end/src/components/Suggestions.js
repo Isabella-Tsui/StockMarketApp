@@ -1,8 +1,8 @@
-import React from 'react'
-import styles from '../pages/Home.module.css'
+import React from "react";
+import styles from "../pages/Home.module.css";
 
 const Suggestions = ({ results, setQuoteText, setResults }) => {
-  console.log(results)
+  console.log(results);
   return (
     <div className={styles.searchResults}>
       <ul>
@@ -10,9 +10,9 @@ const Suggestions = ({ results, setQuoteText, setResults }) => {
           <li
             key={result.symbol}
             onClick={() => {
-              setQuoteText(result.displaySymbol)
+              setQuoteText(result.displaySymbol);
               // setInput('')
-              setResults([])
+              setResults([]);
             }}
           >
             <span>{result.description}</span>
@@ -21,7 +21,7 @@ const Suggestions = ({ results, setQuoteText, setResults }) => {
         ))}
       </ul>
     </div>
-  )
-}
+  );
+};
 
-export default Suggestions
+export default Suggestions;

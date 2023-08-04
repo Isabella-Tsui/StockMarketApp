@@ -22,6 +22,7 @@
   top: 0;
   left: -100%;
   transition: 850ms;
+  z-index: 999;
 }
 
 .nav-menu.active {
@@ -69,9 +70,4 @@
 
 span {
   margin-left: 16px;
-}
-
-/* Show it at top of each component */
-.sideBarr {
-  z-index: -999;
 }

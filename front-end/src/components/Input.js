@@ -1,33 +1,33 @@
-import React from 'react'
-import { useState } from 'react'
-import * as FaIcons from 'react-icons/fa'
-import { handleSearch } from '../utils/apicall'
-import styles from '../pages/Home.module.css'
-import Suggestions from './Suggestions'
+import React from "react";
+import { useState } from "react";
+import * as FaIcons from "react-icons/fa";
+import { handleSearch } from "../utils/apicall";
+import styles from "../pages/Home.module.css";
+import Suggestions from "./Suggestions";
 
 const Input = ({ setQuoteText }) => {
-  const [input, setInput] = useState('')
-  const [results, setResults] = useState([]) // suggestion results
+  const [input, setInput] = useState("");
+  const [results, setResults] = useState([]); // suggestion results
 
   const handleCancel = (e) => {
-    setInput('')
-    setResults([])
-  }
+    setInput("");
+    setResults([]);
+  };
 
   return (
     <>
       <div className={styles.search}>
         <input
-          type='text'
+          type="text"
           value={input}
-          placeholder='Search Stocks'
+          placeholder="Search Stocks"
           onChange={(e) => {
-            setInput(e.target.value)
-            if (e.target.value === '') setResults([])
+            setInput(e.target.value);
+            if (e.target.value === "") setResults([]);
           }}
         />
 
-        {input !== '' && (
+        {input !== "" && (
           <button onClick={handleCancel}>
             {/* Removing Text */}
             <FaIcons.FaTimes />
@@ -35,11 +35,11 @@ const Input = ({ setQuoteText }) => {
         )}
         <button
           onClick={async () => {
-            const data = await handleSearch(input)
-            console.log(data)
-            setResults(data)
+            const data = await handleSearch(input);
+            console.log(data);
+            setResults(data);
 
-            console.log(results)
+            console.log(results);
           }}
           className={styles.searchBtn}
         >
@@ -54,7 +54,7 @@ const Input = ({ setQuoteText }) => {
         />
       )}
     </>
-  )
-}
+  );
+};
 
-export default Input
+export default Input;
