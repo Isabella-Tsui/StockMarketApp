@@ -20,17 +20,13 @@ function App() {
 
   console.log(isAuthenticated);
 
-  const handleLogout = () => {
-    setIsAuthenticated(false);
-  };
-
   useEffect(() => {
     console.log("isAuthenticated:", isAuthenticated);
   }, [isAuthenticated]);
 
   return (
     <Router>
-      {isAuthenticated && <Navbar onLogout={handleLogout} />}
+      {isAuthenticated && <Navbar />}
       <Routes>
         <Route
           path="/"

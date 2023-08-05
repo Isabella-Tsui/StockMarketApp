@@ -76,21 +76,23 @@ import * as FaIcons from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import { getAllStocks, removeStockFromWatchList } from "../utils/api-backend";
 
+// STOCKS DISPLAY COMPONENT
+
 export default function WishList({ isAuthenticated }) {
   const { watchListid } = useParams();
   const [stocks, setStocks] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [stockRemoved, setStockRemoved] = useState(false);
 
   useEffect(() => {
     const watchListStocks = async () => {
-      setLoading(true);
       const response = await getAllStocks(watchListid);
       setStocks(response);
+      setLoading(false);
     };
-    setLoading(true);
-    watchListStocks();
-    setLoading(false);
-  }, [stocks]);
+    setTimeout(watchListStocks, 500);
+    setStockRemoved(true);
+  }, [stockRemoved]);
 
   const handleRemoveStock = async (stockID) => {
     try {
@@ -98,12 +100,22 @@ export default function WishList({ isAuthenticated }) {
       setStocks((prevStocks) =>
         prevStocks.filter((stock) => stock.stockID !== stockID)
       );
+      setStockRemoved(true);
     } catch (error) {
       console.error("Error while removing stock:", error);
     }
   };
 
-  if (loading) return <Spin />;
+  if (loading)
+    return (
+      <>
+        <div
+          style={{ textAlign: "center", fontSize: "30px", marginTop: "30px" }}
+        >
+          <Spin />
+        </div>
+      </>
+    );
 
   if (stocks === undefined || stocks.length === 0) {
     return (

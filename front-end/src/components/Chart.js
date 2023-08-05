@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../pages/Home.module.css";
 import { Spin, Typography } from "antd";
 import * as FaIcons from "react-icons/fa";
@@ -12,12 +11,29 @@ import {
   Tooltip,
   Area,
 } from "recharts";
+import { getCompany, getQuote } from "../utils/apicall";
 
 const Chart = ({ quoteText }) => {
-  // Sample static data for testing the chart
-
   const [historicalData, setHistoricalData] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [USAStock, setUSAStock] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const USAMarket = await getCompany(quoteText);
+      setUSAStock(USAMarket);
+
+      if (USAMarket.country === "US") {
+        const data = await getHistoricalData(quoteText);
+        const filteredData = formatData(data);
+        setHistoricalData(filteredData);
+      }
+
+      setLoading(false);
+    };
+
+    fetchData();
+  }, [quoteText]);
 
   // convert time into unix stamp
   const convertUnixTimestampToDate = (unixTimestamp) => {
@@ -38,25 +54,18 @@ const Chart = ({ quoteText }) => {
     });
   };
 
-  // call api
-  useEffect(() => {
-    console.log("quoteText: ", quoteText);
-    const getData = async () => {
-      setLoading(true);
-      const data = await getHistoricalData(quoteText);
-      console.log("data: ", data);
-      const filteredData = formatData(data);
-      setHistoricalData(filteredData);
-      console.log("filtered data: ", filteredData);
-      setLoading(false);
-    };
-
-    getData();
-  }, [quoteText]); //added
+  if (!USAStock || USAStock.country !== "US") {
+    return (
+      <Typography.Title level={5} style={{ margin: "0" }}>
+        You don't have access to historical data for {quoteText} stock.
+      </Typography.Title>
+    );
+  }
 
   return (
     <div className={styles.chartContainer}>
-      <Typography.Title level={3}>
+      <Typography.Title level={3}>Historical Details</Typography.Title>
+      <Typography.Title level={4}>
         1 Year History of {quoteText} Stock{" "}
         <span>
           <FaIcons.FaChartLine />

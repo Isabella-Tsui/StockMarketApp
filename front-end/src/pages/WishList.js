@@ -89,29 +89,27 @@ import {
   removeWatchListFromWatchLists,
 } from "../utils/api-backend";
 
+// WATCH LIST COMPONENT
+
 export default function WatchList({ isAuthenticated }) {
   const navigate = useNavigate();
   const userId = sessionStorage.getItem("userID");
   const [watchList, setWatchList] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [watchListRemoved, setWatchListRemoved] = useState(false);
 
   useEffect(() => {
     const watchListItems = async () => {
-      setLoading(true);
-      console.log("userId", userId);
       const response = await getAllWatchLists(userId);
-      console.log("response", response);
       setWatchList(response);
       setLoading(false);
     };
-    watchListItems();
+    setTimeout(watchListItems, 500);
     setWatchListRemoved(false);
   }, [watchListRemoved]);
 
   const handleRemoveWatchlist = async (watchlistID) => {
     try {
-      console.log("trying to remove WL");
       await removeWatchListFromWatchLists(watchlistID);
       setWatchList((prevWatchLists) =>
         prevWatchLists.filter(
@@ -119,11 +117,21 @@ export default function WatchList({ isAuthenticated }) {
         )
       );
       setWatchListRemoved(true);
-      console.log(" made it through trying to remove WL");
     } catch (error) {
-      console.error("Error while removing WLLL:", error);
+      console.log("Error removing watch list");
     }
   };
+
+  if (loading)
+    return (
+      <>
+        <div
+          style={{ textAlign: "center", fontSize: "30px", marginTop: "30px" }}
+        >
+          <Spin />
+        </div>
+      </>
+    );
 
   if (watchList === undefined || watchList.length === 0) {
     return (
@@ -134,10 +142,6 @@ export default function WatchList({ isAuthenticated }) {
       </div>
     );
   }
-
-  // if (loading) {
-  //   return <Spin />;
-  // }
 
   return (
     <>

@@ -75,12 +75,9 @@ export default function Home({ isAuthenticated }) {
   //Add stock, then corresponding company, then add to specified watch list
   const addStockToWatchList = async (id) => {
     const stockID = await addStockData();
-    console.log("stockID", stockID);
     if (stockID) {
       const companyID = await addCompanyData();
-      console.log("companyID", companyID);
       if (companyID) {
-        console.log("inside addStockToWatchList before add Watchlist");
         await addWatchList(id, stockID, companyID);
       } else {
         console.log("error");
