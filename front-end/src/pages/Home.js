@@ -12,17 +12,24 @@ import {
   addWatchListItem,
 } from "../utils/api-backend";
 
+//This file contains all the components for the home page.
+//The home page consists of a stock data display, company data
+//display, and a chart with all the stock data for the last year
+
 export default function Home({ isAuthenticated }) {
-  const [quoteText, setQuoteText] = useState("AAPL");
-  const [stockData, setStockData] = useState(null); //dependency for QuoteCard
-  const [companyData, setCompanyData] = useState(null); //dependency for companyData
-  const [modal2Open, setModal2Open] = useState(false); // dependency for modal
+  const [quoteText, setQuoteText] = useState("AAPL"); //Default stock to be displayed
+  const [stockData, setStockData] = useState(null);
+  const [companyData, setCompanyData] = useState(null);
+  const [modal2Open, setModal2Open] = useState(false);
   const [messageAPI, contextHolder] = message.useMessage();
 
-  // add a stock into the db
+  // Function Name: addStockData
+  // Purpose: Add a new stock into the database
+  // Parameters: None
+
   const addStockData = async () => {
     const data = {
-      stock_id: Math.random().toString(35).substring(7),
+      stock_id: quoteText, //Math.random().toString(35).substring(7),
       current_price: stockData.c,
       change: stockData.d,
       percentage_change: stockData.dp,
@@ -34,7 +41,10 @@ export default function Home({ isAuthenticated }) {
     return stockID;
   };
 
-  // add a company to the db
+  // Function Name: addCompanyData
+  // Purpose: Add a new company data entry to the database
+  // Parameters: None
+
   const addCompanyData = async () => {
     const retrivedCompanyData = {
       country: companyData.country,
@@ -57,7 +67,35 @@ export default function Home({ isAuthenticated }) {
     return companyID;
   };
 
-  // add a stock into the db
+  // Function Name: addStockToWatchList
+  // Purpose: Add a new US stock to a watch list
+  // Parameters: id - unqiue stock ticker symbol
+
+  const addStockToWatchList = async (id) => {
+    const flag = sessionStorage.getItem("USStock", "true");
+
+    if (flag) {
+      messageAPI.error(
+        "You can only add stocks from the US to your watch lists."
+      );
+
+      return;
+    }
+    const stockID = await addStockData();
+    if (stockID) {
+      const companyID = await addCompanyData();
+      if (companyID) {
+        await addWatchList(id, stockID, companyID);
+      } else {
+        console.log("error");
+      }
+    }
+  };
+
+  // Function Name: addWatchList
+  // Purpose: Add a new watch list entry
+  // Parameters: id (watch list id), stockID, companyID
+
   const addWatchList = async (id, stockID, companyID) => {
     const listData = {
       watchlist_id: id,
@@ -72,19 +110,9 @@ export default function Home({ isAuthenticated }) {
     }
   };
 
-  //Add stock, then corresponding company, then add to specified watch list
-  const addStockToWatchList = async (id) => {
-    const stockID = await addStockData();
-    if (stockID) {
-      const companyID = await addCompanyData();
-      if (companyID) {
-        await addWatchList(id, stockID, companyID);
-      } else {
-        console.log("error");
-      }
-    }
-  };
-
+  //Here we are returning the stock data (left), company data (right),
+  //and the Modal which renders the component to create and add stocks
+  //to a watch list
   return (
     <>
       {contextHolder}
@@ -142,3 +170,16 @@ export default function Home({ isAuthenticated }) {
     </>
   );
 }
+
+//Add stock, then corresponding company, then add to specified watch list
+// const addStockToWatchList = async (id) => {
+//   const stockID = await addStockData();
+//   if (stockID) {
+//     const companyID = await addCompanyData();
+//     if (companyID) {
+//       await addWatchList(id, stockID, companyID);
+//     } else {
+//       console.log("error");
+//     }
+//   }
+// };

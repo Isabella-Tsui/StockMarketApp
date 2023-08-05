@@ -1,9 +1,12 @@
+/* START OF HOME CSS */
+
 .home {
   background-color: rgb(47, 47, 249);
   min-height: 100vh;
   margin: 0;
   padding-top: 20px;
 }
+
 .search {
   background-color: white;
   margin-left: 10px;
@@ -51,7 +54,7 @@
   max-height: 200px;
   overflow: scroll;
   overflow-x: none;
-  z-index: 999;
+  z-index: 100;
 }
 
 .searchResults ul {
@@ -59,6 +62,7 @@
   padding: 0;
   margin: 0;
 }
+
 .searchResults ul li {
   margin: 0;
   display: flex;
@@ -67,9 +71,11 @@
   padding-right: 20px;
   border-bottom: 1px solid black;
 }
+
 .searchBtn {
   background-color: rgb(180, 178, 178) !important;
 }
+
 .searchBtn:hover {
   background-color: #ddd !important;
 }
@@ -104,6 +110,7 @@
   padding: 0;
   margin: 0;
 }
+
 .left ul li,
 .right ul li {
   margin: 0;
@@ -114,6 +121,10 @@
   padding-right: 20px;
   border-bottom: 1px solid black;
 }
+
+/* END  OF HOME CSS */
+
+/* START OF HOME WATCH LIST HOME CSS */
 
 .wishList {
   display: flex;
@@ -135,12 +146,14 @@
   background-color: white;
   border-radius: 10px;
 }
+
 .container h1 {
   margin: 0;
   padding: 0;
 
   color: rgb(47, 47, 249);
 }
+
 .container h1 span {
   color: red;
   font-size: 30px;
@@ -152,6 +165,7 @@
   margin: 0;
   width: 100%;
 }
+
 .wishList ul li {
   margin: 0;
 
@@ -174,36 +188,19 @@
   align-items: center;
   width: 100px;
 }
+
 .icons > * {
   font-size: 20px;
   cursor: pointer;
 }
-/* hover effect */
+
 .wishList ul li:hover {
   background-color: rgb(228, 227, 227);
   cursor: pointer;
 }
+
 .icons > *:hover {
   transform: scale(0.9);
-}
-
-.chartContainer {
-  margin: 10px;
-  padding: 10px;
-  background-color: white;
-  border-radius: 10px;
-  /* display: flex; */
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.chart {
-  margin-top: 40px;
-  height: 400px;
-  margin: 15px;
-  align-items: flex-start;
-  background-color: white;
 }
 
 .addtoWatchList {
@@ -228,10 +225,10 @@
   cursor: pointer;
   font-size: 16px;
   padding: 5px 20px;
-
   margin-bottom: 10px;
   border-radius: 10px;
 }
+
 .addtoWatchList button:hover {
   background-color: rgb(0, 255, 0);
   transform: scale(0.9);
@@ -243,6 +240,7 @@
   margin: 0;
   width: 100%;
 }
+
 .addtoWatchList ul li {
   margin: 0;
   padding: 0;
@@ -295,3 +293,28 @@
 .stocksData {
   color: black;
 }
+
+/* END OF HOME WATCH LIST HOME CSS */
+
+/* START OF CHART HOME CSS */
+
+.chartContainer {
+  /* GETS ANGRY WITH DISPLAY FLEX */
+  margin: 10px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.chart {
+  margin-top: 40px;
+  height: 400px;
+  margin: 15px;
+  align-items: flex-start;
+  background-color: white;
+}
+
+/* END OF CHART HOME CSS */

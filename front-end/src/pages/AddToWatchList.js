@@ -3,6 +3,9 @@ import React, { useState, useEffect } from "react";
 import styles from "../pages/Home.module.css";
 import { getAllWatchLists, addNewWatchList } from "../utils/api-backend";
 
+//This file contains the component which allows a user
+// to create a watch list
+
 const AddToWatchList = ({ addStockToWatchList }) => {
   const userID = sessionStorage.getItem("userID");
   const [addWatchList, setAddWatchList] = useState(false);
@@ -11,6 +14,10 @@ const AddToWatchList = ({ addStockToWatchList }) => {
   const [watchListName, setWatchListName] = useState("");
   const [watchListAdded, setWatchListAdded] = useState(false);
   const [messageAPI, contextHolder] = message.useMessage();
+
+  // Function Name: handleAddWatchlist
+  // Purpose: Handles the logic for creating a watch list
+  // Parameters: None
 
   const handleAddWatchlist = async () => {
     const response = await addNewWatchList(userID, watchListName);
@@ -28,6 +35,8 @@ const AddToWatchList = ({ addStockToWatchList }) => {
       messageAPI.error("ERROR adding watchlist");
     }
   };
+
+  //Re-renders when a new watch list is added
   useEffect(() => {
     const fetchList = async () => {
       setLoading(true);
@@ -45,6 +54,8 @@ const AddToWatchList = ({ addStockToWatchList }) => {
     return <Spin />;
   }
 
+  //Returns the form that displays a users watch lists
+  //in the home page.
   return (
     <>
       {contextHolder}

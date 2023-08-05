@@ -2,10 +2,16 @@ import React, { useState, useEffect } from "react";
 import { getCompany } from "../utils/apicall";
 import { Spin, Card } from "antd";
 
+//This file contains the component which renders
+//all the companies data
+
 const CompanyData = ({ quoteText, setCompanyData }) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [USAStock, setUSAStock] = useState(false);
+
+  //Re-renders and shows dara only when the stock changes
+  //to a US stock
 
   useEffect(() => {
     const checkUSAMarket = async () => {
@@ -16,6 +22,9 @@ const CompanyData = ({ quoteText, setCompanyData }) => {
         const data = await getCompany(quoteText);
         setData(data);
         setCompanyData(data);
+        sessionStorage.setItem("USStock", "true");
+      } else {
+        sessionStorage.setItem("USStock", "false");
       }
 
       setLoading(false);
@@ -26,6 +35,7 @@ const CompanyData = ({ quoteText, setCompanyData }) => {
 
   if (loading) return <Spin />;
 
+  //Returns all the data concerning a company
   return (
     <>
       {USAStock.country === "US" ? (

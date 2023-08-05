@@ -5,14 +5,23 @@ import { handleSearch } from "../utils/apicall";
 import styles from "../pages/Home.module.css";
 import Suggestions from "./Suggestions";
 
+//This file contains the component which renders
+//the stock search bar.
+
 const Input = ({ setQuoteText }) => {
   const [input, setInput] = useState("");
-  const [results, setResults] = useState([]); // suggestion results
+  const [results, setResults] = useState([]);
 
-  const handleCancel = (e) => {
+  // Function Name: handleCancel
+  // Purpose: Reset search bar
+  // Parameters: None
+
+  const handleCancel = () => {
     setInput("");
     setResults([]);
   };
+
+  //Returns a list with the search results
 
   return (
     <>
@@ -29,7 +38,6 @@ const Input = ({ setQuoteText }) => {
 
         {input !== "" && (
           <button onClick={handleCancel}>
-            {/* Removing Text */}
             <FaIcons.FaTimes />
           </button>
         )}

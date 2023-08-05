@@ -1,68 +1,99 @@
 const API_URL = "http://localhost:4000/";
 
+//This file contains all the front end API calls
+
+// Function Name: getAllWatchListIDStocks
+// Purpose: Fetch all the stock entries against a unqiue watch list id
+// Parameters: watchListID
+
+export const getAllWatchListIDStocks = async (watchListID) => {
+  const apiUrl = `${API_URL}getAllWatchListRecords/${watchListID}`;
+
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    return data.lists;
+  } catch (e) {
+    console.log(e);
+    return "Error Fetching Data";
+  }
+};
+
+// Function Name: removeWatchListFromWatchLists
+// Purpose: Delete a watch list against a unqiue watch list id
+// Parameters: watchlist_id
+
 export const removeWatchListFromWatchLists = async (watchlist_id) => {
   const apiURL = `${API_URL}removeWatchlist/${watchlist_id}`;
-  console.log("apiURL", apiURL);
+
   try {
     const response = await fetch(apiURL, {
       method: "DELETE",
     });
     const data = await response.json();
-    console.log("data", data);
     return data.data;
   } catch (error) {
     console.error("Error removing WL:", error);
   }
 };
 
+// Function Name: removeStockFromWatchList
+// Purpose: Delete a stock against a unqiue stock id
+// Parameters: stockID
+
 export const removeStockFromWatchList = async (stockID) => {
   const apiURL = `${API_URL}removeStock/${stockID}`;
-  console.log("apiURL", apiURL);
+
   try {
     const response = await fetch(apiURL, {
       method: "DELETE",
     });
     const data = await response.json();
-    console.log("data", data);
     return data.data;
   } catch (error) {
     console.error("Error removing stock:", error);
   }
 };
 
-// getting all the stocks against a watchlist id
+// Function Name: getAllStocks
+// Purpose: Fetch all the stocks for a certain watch list
+// Parameters: watchListid
+
 export const getAllStocks = async (watchListid) => {
   const apiURL = `${API_URL}getWatchListStocks/${watchListid}`;
-  console.log("apiURL", apiURL);
+
   try {
-    //fetch all the stock records with this watch list id
     const response = await fetch(apiURL);
     const data = await response.json();
-    console.log("api data", data);
     return data.data;
   } catch (e) {
     return e;
   }
 };
 
-//getting all the watchlist
+// Function Name: getAllWatchLists
+// Purpose: Fetch all the watch lists for a certain user
+// Parameters: userID
+
 export const getAllWatchLists = async (userID) => {
   const apiURL = `${API_URL}getwatchlist/${userID}`;
-  console.log("apiURL", apiURL);
+
   try {
-    //fetch all the watch list records with this username
     const response = await fetch(apiURL);
     const data = await response.json();
-    console.log("api data", data);
     return data.data;
   } catch (e) {
     return e;
   }
 };
 
-//adding a new watch list
+// Function Name: addNewWatchList
+// Purpose: Add a new watch list for a certain user
+// Parameters: userID, watchListName
+
 export const addNewWatchList = async (userID, watchListName) => {
   const apiURL = `${API_URL}addwatchlist`;
+
   try {
     const response = await fetch(apiURL, {
       method: "POST",
@@ -70,7 +101,6 @@ export const addNewWatchList = async (userID, watchListName) => {
         userID: userID,
         watchListName: watchListName,
       }),
-
       headers: {
         "Content-Type": "application/json",
       },
@@ -86,7 +116,10 @@ export const addNewWatchList = async (userID, watchListName) => {
   }
 };
 
-// add a stock
+// Function Name: addNewStock
+// Purpose: Add a new stock into the database
+// Parameters: StockData
+
 export const addNewStock = async (StockData) => {
   const apiURL = `${API_URL}addstock`;
   try {
@@ -111,7 +144,10 @@ export const addNewStock = async (StockData) => {
   }
 };
 
-// add a company
+// Function Name: addCompany
+// Purpose: Add a new company into the database
+// Parameters: CompanyData
+
 export const addCompany = async (CompanyData) => {
   const apiURL = `${API_URL}addcompany`;
   try {
@@ -135,10 +171,12 @@ export const addCompany = async (CompanyData) => {
   }
 };
 
-//add a watch list entry
+// Function Name: addWatchListItem
+// Purpose: Add a new stock into a watch list
+// Parameters: ListData
+
 export const addWatchListItem = async (ListData) => {
   const apiURL = `${API_URL}addWatchListRecord`;
-  console.log("ListData", ListData);
   try {
     const response = await fetch(apiURL, {
       method: "POST",
@@ -150,7 +188,6 @@ export const addWatchListItem = async (ListData) => {
     });
 
     const data = await response.json();
-    console.log("data addWatchListItem", data);
     if (data.success) {
       return true;
     } else {

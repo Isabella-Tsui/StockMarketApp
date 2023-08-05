@@ -1,5 +1,8 @@
 import React from "react";
 
+//This file contains the component that
+//handles the submits
+
 const SubmitButton = (props) => {
   return (
     <div className="submit-button">

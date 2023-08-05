@@ -11,13 +11,17 @@ import {
   Tooltip,
   Area,
 } from "recharts";
-import { getCompany, getQuote } from "../utils/apicall";
+import { getCompany } from "../utils/apicall";
+
+//This file contains the component that renders the
+//historical data chart
 
 const Chart = ({ quoteText }) => {
   const [historicalData, setHistoricalData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [USAStock, setUSAStock] = useState(false);
 
+  //Re-renders if the stock is changed to a US stock.
   useEffect(() => {
     const fetchData = async () => {
       const USAMarket = await getCompany(quoteText);
@@ -35,13 +39,19 @@ const Chart = ({ quoteText }) => {
     fetchData();
   }, [quoteText]);
 
-  // convert time into unix stamp
+  // Function Name: convertUnixTimestampToDate
+  // Purpose: Convert time into unix stamp
+  // Parameters: unixTimestamp
+
   const convertUnixTimestampToDate = (unixTimestamp) => {
     const milliseconds = unixTimestamp * 1000;
     return new Date(milliseconds).toLocaleDateString();
   };
 
-  // format data for chart
+  // Function Name: formatData
+  // Purpose: Take many arrays and turn them into data points
+  // Parameters: data
+
   const formatData = (data) => {
     return data.c.map((item, index) => {
       return {
@@ -54,6 +64,8 @@ const Chart = ({ quoteText }) => {
     });
   };
 
+  //If the stock is not from the US display and error message
+  //otherwise display the chart
   if (!USAStock || USAStock.country !== "US") {
     return (
       <Typography.Title level={5} style={{ margin: "0" }}>
@@ -61,6 +73,8 @@ const Chart = ({ quoteText }) => {
       </Typography.Title>
     );
   }
+
+  //Return the chart
 
   return (
     <div className={styles.chartContainer}>

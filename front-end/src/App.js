@@ -13,6 +13,9 @@ import WatchList from "./pages/WishList.js";
 import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
 
+// This component establishes all the routes a user can take
+// within the web App.
+
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(
     () => sessionStorage.getItem("isAuthenticated") === "true"

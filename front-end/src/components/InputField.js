@@ -1,5 +1,9 @@
 import React from "react";
 
+//This file contains the component which
+//handles user input in the authentication and
+//registration.
+
 const InputField = (props) => {
   return (
     <div className="input-field">
