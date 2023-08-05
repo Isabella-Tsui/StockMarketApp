@@ -1,24 +1,25 @@
-const connection = require("./db/db.js"); //Added
-const { login, register, logout } = require("./authentication"); //auth
-const { getWatchList, addWatchList } = require("./watchList"); //watchList
+const connection = require("./db/db.js");
+const { login, register, logout } = require("./authentication");
 const {
-  addAStockIntoDB,
-  addCompanyData,
+  getWatchList,
+  addWatchList,
   addWatchListRecord,
   getAllWatchListRecords,
   getWatchListStocks,
-  removeStock,
   removeWatchlist,
-} = require("./watchListStocks.js");
-
-const bcrypt = require("bcrypt"); //Added
-const session = require("express-session"); //Added
-const MySQLStore = require("express-mysql-session")(session); //Added
+} = require("./watchList");
+const bcrypt = require("bcrypt");
+const session = require("express-session");
+const MySQLStore = require("express-mysql-session")(session);
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const express = require("express");
+const {
+  addAStockIntoDB,
+  addCompanyData,
+  removeStock,
+} = require("./watchListStocks.js");
 
-//Added
 const sessionStore = new MySQLStore(
   {
     expiration: 1825 * 86400 * 1000,
@@ -28,22 +29,16 @@ const sessionStore = new MySQLStore(
 );
 
 const app = express();
-
 const port = 4000;
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cors({
     origin: "http://localhost:3000", // Replace this with the URL of your frontend app
-    credentials: true, // Allow credentials (cookies, in this case)
+    credentials: true,
   })
 );
-
-//Added stuff inside cors
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-connection.connect();
-
-//Added //LOOK AT THIS
 app.use(
   session({
     key: "asdf",
@@ -60,21 +55,23 @@ app.use(
   })
 );
 
-// Authentication
+connection.connect();
+
+// Authentication endpoints
 app.post("/login", login);
 app.post("/register", register);
 app.post("/logout", logout);
 
-// Inserting stock data
+//Insertion endpoints
 app.get("/getwatchlist/:username", getWatchList);
 app.post("/addwatchlist", addWatchList);
 app.post("/addStock", addAStockIntoDB);
 app.post("/addCompany", addCompanyData);
 app.post("/addWatchListRecord", addWatchListRecord);
-app.get("/getAllWatchListRecords", getAllWatchListRecords);
+app.get("/getAllWatchListRecords/:id", getAllWatchListRecords);
 app.get("/getWatchListStocks/:watchlistId", getWatchListStocks);
 
-//Removing stock and watchlist data
+//Removal endpoints
 app.delete("/removeStock/:stockID", removeStock);
 app.delete("/removeWatchlist/:watchlistId", removeWatchlist);
 

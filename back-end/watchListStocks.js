@@ -1,6 +1,12 @@
-const connection = require("./db/db.js"); //Added
+const connection = require("./db/db.js");
 
-// add a stock data into DB
+//This file contains all the API endpoints that
+//are related to the stocks
+
+// Function Name: addAStockIntoDB
+// Purpose: Add a stock into the database
+// Parameters: req, res
+
 const addAStockIntoDB = async (req, res) => {
   const stock_id = req.body.stock_id;
   const current_price = req.body.current_price;
@@ -38,7 +44,10 @@ const addAStockIntoDB = async (req, res) => {
   );
 };
 
-// add company Data to DB
+// Function Name: addCompanyData
+// Purpose: Add a company's information into the database
+// Parameters: req, res
+
 const addCompanyData = async (req, res) => {
   const country = req.body.country;
   const currency = req.body.currency;
@@ -86,84 +95,9 @@ const addCompanyData = async (req, res) => {
   );
 };
 
-const addWatchListRecord = async (req, res) => {
-  const watchlist_id = req.body.watchlist_id;
-  const stock_id = req.body.stock_id;
-  const company_id = req.body.company_id;
-
-  connection.query(
-    `INSERT INTO watchlist_stocks (watchlist_id ,stock_id , company_id ) VALUE(${watchlist_id}, '${stock_id}', '${company_id}')`,
-    async (err, data, fields) => {
-      if (err) {
-        console.log(err);
-        console.log("Error while inserting WatchListData data");
-        res.json({
-          success: false,
-          msg: "Error while inserting Company data",
-        });
-      } else {
-        res.json({
-          success: true,
-          msg: "Successfully Added a Record",
-        });
-      }
-    }
-  );
-};
-
-// getting all watch list records against a watchlist ID
-const getAllWatchListRecords = async (req, res) => {
-  const watchlist_id = req.body.watchlist_id;
-
-  connection.query(
-    `SELECT * FROM watchlist_stocks WHERE watchlist_id = '${watchlist_id}'`,
-    async (err, data, fields) => {
-      if (err) {
-        console.log(err);
-        console.log("Error while inserting Company data");
-        res.json({
-          success: false,
-          msg: "Error while inserting Company data",
-        });
-      } else {
-        res.json({
-          success: true,
-          lists: data,
-        });
-      }
-    }
-  );
-};
-
-const getWatchListStocks = async (req, res) => {
-  const watchlistId = req.params.watchlistId;
-
-  connection.query(
-    `SELECT * FROM watchlist_stocks WHERE watchlist_id = '${watchlistId}';`,
-    async (err, data, fields) => {
-      if (err) {
-        console.log("Error fetching watchlist stocks:", err);
-        res.json({
-          success: false,
-          msg: "An error has occurred, please try again",
-        });
-        return;
-      }
-
-      if (data && data.length > 0) {
-        res.json({
-          success: true,
-          data: data,
-        });
-      } else {
-        res.json({
-          success: false,
-          msg: "No stocks found for the watchlist",
-        });
-      }
-    }
-  );
-};
+// Function Name: removeStock
+// Purpose: Delete a stock from a watch list
+// Parameters: req, res
 
 const removeStock = async (req, res) => {
   const stockID = req.params.stockID;
@@ -199,44 +133,8 @@ const removeStock = async (req, res) => {
   );
 };
 
-const removeWatchlist = async (req, res) => {
-  const watchlistID = req.params.watchlistId;
-  console.log("watchlistID", watchlistID);
-
-  connection.query(
-    `DELETE FROM watch_lists WHERE watchlist_id like '${watchlistID}';`,
-
-    async (err, data, fields) => {
-      if (err) {
-        console.log("Error deleting stock:", err);
-        res.json({
-          success: false,
-          msg: "An error has occurred, please try again MADE IT HERE",
-        });
-        return;
-      }
-
-      if (data && data.length > 0) {
-        res.json({
-          success: true,
-          msg: "V bad",
-        });
-      } else {
-        res.json({
-          success: false,
-          msg: "sucessfully deleted WL",
-        });
-      }
-    }
-  );
-};
-
 module.exports = {
   addAStockIntoDB,
   addCompanyData,
-  addWatchListRecord,
-  getAllWatchListRecords,
-  getWatchListStocks,
   removeStock,
-  removeWatchlist,
 };
