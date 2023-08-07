@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-const connection = require("./db/db.js");
+const connection = require("./database/databaseConnection.js");
 
 const login = async (req, res) => {
   let username = req.body.username;

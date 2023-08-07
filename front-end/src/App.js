@@ -17,11 +17,26 @@ import RegistrationPage from "./pages/RegistrationPage";
 // within the web App.
 
 function App() {
+  // const [isAuthenticated, setIsAuthenticated] = useState(
+  //   () => sessionStorage.getItem("isAuthenticated") === "true"
+  // );
+
+  // console.log(isAuthenticated);
+
+  // useEffect(() => {
+  //   console.log("isAuthenticated:", isAuthenticated);
+  // }, [isAuthenticated]);
+
   const [isAuthenticated, setIsAuthenticated] = useState(
     () => sessionStorage.getItem("isAuthenticated") === "true"
   );
 
   console.log(isAuthenticated);
+
+  useEffect(() => {
+    // Update the isAuthenticated state whenever sessionStorage changes
+    setIsAuthenticated(sessionStorage.getItem("isAuthenticated") === "true");
+  }, []);
 
   useEffect(() => {
     console.log("isAuthenticated:", isAuthenticated);

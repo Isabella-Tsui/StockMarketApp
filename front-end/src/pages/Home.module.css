@@ -192,15 +192,14 @@ holds the stock and company data */
   background-color: transparent;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 100px;
+  padding-left: 20px;
 }
 
 /* WatchList.js and WishList.js CSS */
 .icons > * {
   font-size: 20px;
   cursor: pointer;
+  margin: 0 20px;
 }
 
 /* WatchList.js and WishList.js CSS */
@@ -302,12 +301,6 @@ modalButton {
 
 /* START OF CHART HOME CSS */
 .chart {
-  /* margin-top: 40px;
-  height: 400px;
-  margin: 15px;
-  align-items: flex-start;
-  background-color: white; */
-
   margin-top: 40px;
   height: 400px;
 }

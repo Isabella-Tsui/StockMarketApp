@@ -84,7 +84,7 @@ export default function WatchList({ isAuthenticated }) {
 
       <div className={styles.home}>
         <div className={styles.container}>
-          <h1>Your Watch Lists</h1>
+          <h1>{userId}'s Watch Lists</h1>
 
           <Divider
             size="large"

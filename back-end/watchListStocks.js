@@ -1,4 +1,4 @@
-const connection = require("./db/db.js");
+const connection = require("./database/databaseConnection.js");
 
 //This file contains all the API endpoints that
 //are related to the stocks
@@ -17,15 +17,18 @@ const addAStockIntoDB = async (req, res) => {
   const low = req.body.low;
 
   connection.query(
-    `INSERT INTO stock_data (stock_id, current_price, \`change\`, percentage_change, \`open\`, high, low) 
-    VALUES ('${stock_id}', ${current_price}, ${change}, ${percentage_change}, ${open}, ${high}, ${low}) 
+    `INSERT INTO stock_data (stock_id, current_price,
+       \`change\`, percentage_change, \`open\`, high, low) 
+
+    VALUES ('${stock_id}', ${current_price}, ${change},
+     ${percentage_change}, ${open}, ${high}, ${low}) 
+
     ON DUPLICATE KEY UPDATE
       current_price = VALUES(current_price),
       \`change\` = ${change},
       percentage_change = ${percentage_change},
-      \`open\` = ${open},
-      high = ${high},
-      low = ${low};`,
+      \`open\` = ${open}, high = ${high},low = ${low};`,
+
     async (err, data, fields) => {
       if (err) {
         console.log(err);
@@ -64,7 +67,17 @@ const addCompanyData = async (req, res) => {
   const weburl = req.body.weburl;
 
   connection.query(
-    `INSERT INTO company_data (country, currency, estimate_currency, exchange, finnhubIndustry, ipo, logo, market_capitalization, name, phone, share_outstanding, ticker, weburl) VALUES ('${country}', '${currency}', '${estimate_currency}', '${exchange}', '${finnhubIndustry}', ${ipo}, '${logo}', ${market_capitalization}, '${name}', ${phone}, ${share_outstanding}, '${ticker}', '${weburl}') ON DUPLICATE KEY UPDATE
+    `INSERT INTO company_data (country, currency, 
+      estimate_currency, exchange, finnhubIndustry, 
+      ipo, logo, market_capitalization, name, phone, 
+      share_outstanding, ticker, weburl) 
+
+    VALUES ('${country}', '${currency}', '${estimate_currency}',
+    '${exchange}', '${finnhubIndustry}', ${ipo}, '${logo}',
+     ${market_capitalization}, '${name}', ${phone}, ${share_outstanding},
+      '${ticker}', '${weburl}') 
+      
+    ON DUPLICATE KEY UPDATE
     country = VALUES(country),
     currency = VALUES(currency),
     estimate_currency = VALUES(estimate_currency),
@@ -77,6 +90,7 @@ const addCompanyData = async (req, res) => {
     phone = VALUES(phone),
     share_outstanding = VALUES(share_outstanding),
     weburl = VALUES(weburl)`,
+
     async (err, data, fields) => {
       if (err) {
         console.log(err);

@@ -1,4 +1,4 @@
-const connection = require("./db/db.js");
+const connection = require("./database/databaseConnection.js");
 
 //This file contains all the API endpoints that
 //are related to the watch lists

@@ -3,9 +3,8 @@ import styles from "../pages/Home.module.css";
 import { Spin, Typography } from "antd";
 import * as FaIcons from "react-icons/fa";
 import { getHistoricalData } from "../utils/apicall";
+import { getCompany } from "../utils/apicall";
 import {
-  AreaChart,
-  Area,
   LineChart,
   Line,
   XAxis,
@@ -14,7 +13,6 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { getCompany } from "../utils/apicall";
 
 //This file contains the component that renders the
 //historical data chart
@@ -121,28 +119,31 @@ const Chart = ({ quoteText }) => {
                 dataKey="close"
                 stroke="#312e81"
                 strokeWidth={1}
+                dot={false}
               />
               <Line
                 type="monotone"
                 dataKey="open"
                 stroke="#818281"
                 strokeWidth={1}
+                dot={false}
               />
               <Line
                 type="monotone"
                 dataKey="high"
                 stroke="#1c16d9"
                 strokeWidth={1}
+                dot={false}
               />
               <Line
                 type="monotone"
                 dataKey="low"
                 stroke="#5fcbfa"
                 strokeWidth={1}
+                dot={false}
               />
             </LineChart>
           </ResponsiveContainer>
-          ;
         </div>
       )}
     </div>

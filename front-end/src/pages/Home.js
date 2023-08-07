@@ -169,6 +169,28 @@ export default function Home({ isAuthenticated }) {
         open={modal2Open}
         onOk={() => setModal2Open(false)}
         onCancel={() => setModal2Open(false)}
+        okButtonProps={{
+          style: {
+            backgroundColor: "#353661",
+            color: "#ffffff",
+            borderRadius: "8px",
+            padding: "3px 22px 10px 6px",
+            fontSize: "16px",
+            alignItems: "center",
+          },
+        }}
+        cancelButtonProps={{
+          style: {
+            backgroundColor: "#353661",
+            color: "#ffffff",
+            border: "2px solid #000000",
+            borderRadius: "8px",
+            padding: "2px 22px 10px 4px",
+            fontSize: "16px",
+            alignItems: "center",
+          },
+        }}
+        closeIcon={<span style={{ paddingRight: "31px" }}>X</span>}
       >
         <AddToWatchList addStockToWatchList={addStockToWatchList} />
       </Modal>

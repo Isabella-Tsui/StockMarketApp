@@ -31,7 +31,6 @@ const ShowStockData = ({ data }) => {
       style={{
         display: "flex",
         justifyContent: "center",
-        alignItems: "flex-start",
         gap: "50px",
       }}
     >
@@ -114,7 +113,6 @@ const ShowStockData = ({ data }) => {
               style={{
                 width: "120px",
                 height: "120px",
-
                 display: "block",
               }}
             />

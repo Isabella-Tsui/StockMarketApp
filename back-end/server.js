@@ -1,4 +1,4 @@
-const connection = require("./db/db.js");
+const connection = require("./database/databaseConnection.js");
 const { login, register, logout } = require("./authentication");
 const {
   getWatchList,
