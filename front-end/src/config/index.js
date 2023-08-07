@@ -1,6 +1,5 @@
 module.exports = {
-    app: {
-        host: "http://localhost:4000/"
-
-    }
+  app: {
+    host: "isabella-tsui-server/api/",
+  },
 };
