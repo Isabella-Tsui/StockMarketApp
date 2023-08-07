@@ -62,7 +62,13 @@ const QuoteCard = ({ quoteText, setStockData, setCompanyData }) => {
               <Typography.Title level={5} style={{ margin: "0" }}>
                 Previous Close
               </Typography.Title>
-              <span>{quote.d}$</span>
+              <span
+                style={{
+                  color: quote.d > 0 ? "green" : "red",
+                }}
+              >
+                {quote.d}$
+              </span>
             </li>
             <li>
               <Typography.Title level={5} style={{ margin: "0" }}>
@@ -98,7 +104,7 @@ const QuoteCard = ({ quoteText, setStockData, setCompanyData }) => {
         )
       ) : (
         <Typography.Title level={5} style={{ margin: "0" }}>
-          You don't have access to stock data.
+          You don't have access to stock data outside of the US.
         </Typography.Title>
       )}
     </Card>

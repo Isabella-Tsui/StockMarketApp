@@ -55,11 +55,13 @@ const Input = ({ setQuoteText }) => {
         </button>
       </div>
       {results.length > 0 && (
-        <Suggestions
-          results={results}
-          setQuoteText={setQuoteText}
-          setResults={setResults}
-        />
+        <div className={styles.suggestionMenu}>
+          <Suggestions
+            results={results}
+            setQuoteText={setQuoteText}
+            setResults={setResults}
+          />
+        </div>
       )}
     </>
   );

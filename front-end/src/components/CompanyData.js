@@ -75,7 +75,16 @@ const CompanyData = ({ quoteText, setCompanyData }) => {
           </p>
         </Card>
       ) : (
-        <p>You don't have access to company data.</p>
+        <p
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            paddingLeft: "20px",
+          }}
+        >
+          You don't have access to company data outside of the US.
+        </p>
       )}
     </>
   );

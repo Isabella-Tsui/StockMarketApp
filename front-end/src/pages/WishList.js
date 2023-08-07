@@ -111,7 +111,7 @@ export default function WatchList({ isAuthenticated }) {
                         navigate(`/wishlist/${item.watchlist_id}`);
                       }}
                       style={{
-                        color: "#0000ff",
+                        color: "#353661",
                       }}
                     />
                     <FaIcons.FaTrash
@@ -119,7 +119,7 @@ export default function WatchList({ isAuthenticated }) {
                         handleRemoveWatchlist(item.watchlist_id);
                       }}
                       style={{
-                        color: "#ff0000",
+                        color: "#9e2929",
                       }}
                     />
                   </div>

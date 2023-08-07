@@ -27,6 +27,7 @@ export default function WishList({ isAuthenticated }) {
 
     // Set timmer so that if the API reponse is fast the transition
     // is not jarring to the user
+
     setTimeout(watchListStocks, 500);
     setStockRemoved(true);
   }, [stockRemoved]);
@@ -103,21 +104,21 @@ export default function WishList({ isAuthenticated }) {
                   </div>
 
                   <div className={styles.icons}>
+                    <FaIcons.FaEye
+                      style={{
+                        color: "#353661",
+                      }}
+                      onClick={() => {
+                        setSelectedStock(item);
+                        setModal2Open(true);
+                      }}
+                    />
                     <FaIcons.FaTrash
                       onClick={() => {
                         handleRemoveStock(item.stock_id);
                       }}
                       style={{
-                        color: "#ff0000",
-                      }}
-                    />
-                    <FaIcons.FaEye
-                      style={{
-                        color: "#0000ff",
-                      }}
-                      onClick={() => {
-                        setSelectedStock(item);
-                        setModal2Open(true);
+                        color: "#9e2929",
                       }}
                     />
                   </div>

@@ -5,11 +5,14 @@ import * as FaIcons from "react-icons/fa";
 import { getHistoricalData } from "../utils/apicall";
 import {
   AreaChart,
+  Area,
+  LineChart,
+  Line,
   XAxis,
   YAxis,
-  ResponsiveContainer,
+  CartesianGrid,
   Tooltip,
-  Area,
+  ResponsiveContainer,
 } from "recharts";
 import { getCompany } from "../utils/apicall";
 
@@ -78,8 +81,8 @@ const Chart = ({ quoteText }) => {
 
   return (
     <div className={styles.chartContainer}>
-      <Typography.Title level={3}>Historical Details</Typography.Title>
-      <Typography.Title level={4}>
+      <Typography.Title level={2}>Historical Details</Typography.Title>
+      <Typography.Title level={3}>
         1 Year History of {quoteText} Stock{" "}
         <span>
           <FaIcons.FaChartLine />
@@ -89,51 +92,57 @@ const Chart = ({ quoteText }) => {
         <Spin />
       ) : (
         <div className={styles.chart}>
-          <ResponsiveContainer>
-            <AreaChart data={historicalData}>
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart data={historicalData}>
               <defs>
-                <linearGradient id="chartColor" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopOpacity={0.8} />
-                  <stop offset="95%" stopColor="#312e81" stopOpacity={0} />
+                <linearGradient id="closeColor" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#5E81AC" stopOpacity={0.8} />
+                  <stop offset="95%" stopColor="#5E81AC" stopOpacity={0} />
+                </linearGradient>
+                <linearGradient id="openColor" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#81A1C1" stopOpacity={0.8} />
+                  <stop offset="95%" stopColor="#81A1C1" stopOpacity={0} />
+                </linearGradient>
+                <linearGradient id="highColor" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#1c16d9" stopOpacity={0.8} />
+                  <stop offset="95%" stopColor="#1c16d9" stopOpacity={0} />
+                </linearGradient>
+                <linearGradient id="lowColor" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#5fcbfa" stopOpacity={0.8} />
+                  <stop offset="95%" stopColor="#5fcbfa" stopOpacity={0} />
                 </linearGradient>
               </defs>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="date" />
+              <YAxis domain={["dataMin", "dataMax"]} />
               <Tooltip />
-              <Area
+              <Line
                 type="monotone"
                 dataKey="close"
                 stroke="#312e81"
-                fill="url(#chartColor)"
-                fillOpacity={1}
-                strokeWidth={0.5}
+                strokeWidth={1}
               />
-              <Area
+              <Line
                 type="monotone"
                 dataKey="open"
                 stroke="#818281"
-                fill="#117e81"
-                fillOpacity={1}
-                strokeWidth={0.5}
+                strokeWidth={1}
               />
-              <Area
+              <Line
                 type="monotone"
                 dataKey="high"
-                stroke="#ff0000"
-                fill="#387e81"
-                fillOpacity={1}
-                strokeWidth={0.5}
+                stroke="#1c16d9"
+                strokeWidth={1}
               />
-              <Area
+              <Line
                 type="monotone"
                 dataKey="low"
-                stroke="#00ff00"
-                fill="#117e81"
-                fillOpacity={1}
-                strokeWidth={0.5}
+                stroke="#5fcbfa"
+                strokeWidth={1}
               />
-              <XAxis dataKey="date" />
-              <YAxis domain={["dataMin", "dataMax"]} />
-            </AreaChart>
+            </LineChart>
           </ResponsiveContainer>
+          ;
         </div>
       )}
     </div>

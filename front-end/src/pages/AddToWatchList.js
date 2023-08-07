@@ -77,7 +77,7 @@ const AddToWatchList = ({ addStockToWatchList }) => {
           </ul>
         )}
 
-        <Divider size="large"> OR </Divider>
+        <Divider size="large"> </Divider>
 
         <div class={styles.newWatchList}>
           <button

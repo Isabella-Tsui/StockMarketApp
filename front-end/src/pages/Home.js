@@ -73,8 +73,8 @@ export default function Home({ isAuthenticated }) {
 
   const addStockToWatchList = async (id) => {
     const flag = sessionStorage.getItem("USStock", "true");
-
-    if (flag) {
+    console.log("flag", flag);
+    if (flag !== "true") {
       messageAPI.error(
         "You can only add stocks from the US to your watch lists."
       );
@@ -122,21 +122,25 @@ export default function Home({ isAuthenticated }) {
 
         <div className={styles.wishList}>
           <div></div>
-          <Button
-            type="primary"
-            style={{
-              margin: "0px 16px",
-              boxShadow: "0 4px 8px 0 rgba(0,0,0,0.1)",
-              backgroundColor: "#f5f5f5",
-              color: "#000000",
-              borderColor: "#f5f5f5",
-            }}
-            onClick={() => {
-              setModal2Open(true);
-            }}
-          >
-            Add to Watch List
-          </Button>
+          {
+            <Button
+              type="primary"
+              style={{
+                margin: "0px 16px",
+                boxShadow: "0 4px 8px 0 rgba(0,0,0,0.1)",
+                backgroundColor: "#f5f5f5",
+                color: "#000000",
+                borderColor: "#f5f5f5",
+              }}
+              onClick={() => {
+                setModal2Open(true);
+              }}
+            >
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                Add to Watch List
+              </div>
+            </Button>
+          }
         </div>
         <div className={styles.stocksDetail}>
           <div className={styles.left}>
@@ -152,9 +156,10 @@ export default function Home({ isAuthenticated }) {
             />
           </div>
         </div>
-
-        <div class={styles.chart}>
-          <Chart quoteText={quoteText} />
+        <div class={styles.chartWrapper}>
+          <div class={styles.chart}>
+            <Chart quoteText={quoteText} />
+          </div>
         </div>
       </div>
 
@@ -170,16 +175,3 @@ export default function Home({ isAuthenticated }) {
     </>
   );
 }
-
-//Add stock, then corresponding company, then add to specified watch list
-// const addStockToWatchList = async (id) => {
-//   const stockID = await addStockData();
-//   if (stockID) {
-//     const companyID = await addCompanyData();
-//     if (companyID) {
-//       await addWatchList(id, stockID, companyID);
-//     } else {
-//       console.log("error");
-//     }
-//   }
-// };

@@ -44,6 +44,7 @@ export const getCompany = async (quoteText) => {
 
 export const handleSearch = async (input) => {
   const apiURL = `${baseURL}search?q=${input}&token=${API_KEY}`;
+  console.log(apiURL);
 
   try {
     const response = await fetch(apiURL);
