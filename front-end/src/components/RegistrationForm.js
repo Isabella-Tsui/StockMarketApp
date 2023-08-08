@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import InputField from "./InputField";
 import SubmitButton from "./SubmitButton";
 import { useNavigate } from "react-router-dom";
+import config from "../config";
 
 //This file contains the registration component
 
@@ -57,7 +58,7 @@ const RegistrationForm = () => {
         name: name,
       });
 
-      let res = await fetch("http://localhost:4000/register", {
+      let res = await fetch("{config.app.host}register", {
         method: "post",
         headers: {
           Accept: "application/json",

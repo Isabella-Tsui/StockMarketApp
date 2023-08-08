@@ -1,4 +1,5 @@
-const API_URL = "http://localhost:4000/";
+import config from "../config";
+// const API_URL = "http://localhost:4000/";
 
 //This file contains all the front end API calls
 
@@ -7,7 +8,7 @@ const API_URL = "http://localhost:4000/";
 // Parameters: watchListID
 
 export const getAllWatchListIDStocks = async (watchListID) => {
-  const apiUrl = `${API_URL}getAllWatchListRecords/${watchListID}`;
+  const apiUrl = `${config.app.host}getAllWatchListRecords/${watchListID}`;
 
   try {
     const response = await fetch(apiUrl);
@@ -24,7 +25,7 @@ export const getAllWatchListIDStocks = async (watchListID) => {
 // Parameters: watchlist_id
 
 export const removeWatchListFromWatchLists = async (watchlist_id) => {
-  const apiURL = `${API_URL}removeWatchlist/${watchlist_id}`;
+  const apiURL = `${config.app.host}removeWatchlist/${watchlist_id}`;
 
   try {
     const response = await fetch(apiURL, {
@@ -42,7 +43,7 @@ export const removeWatchListFromWatchLists = async (watchlist_id) => {
 // Parameters: stockID
 
 export const removeStockFromWatchList = async (stockID) => {
-  const apiURL = `${API_URL}removeStock/${stockID}`;
+  const apiURL = `${config.app.host}removeStock/${stockID}`;
 
   try {
     const response = await fetch(apiURL, {
@@ -60,7 +61,7 @@ export const removeStockFromWatchList = async (stockID) => {
 // Parameters: watchListid
 
 export const getAllStocks = async (watchListid) => {
-  const apiURL = `${API_URL}getWatchListStocks/${watchListid}`;
+  const apiURL = `${config.app.host}getWatchListStocks/${watchListid}`;
 
   try {
     const response = await fetch(apiURL);
@@ -76,7 +77,7 @@ export const getAllStocks = async (watchListid) => {
 // Parameters: userID
 
 export const getAllWatchLists = async (userID) => {
-  const apiURL = `${API_URL}getwatchlist/${userID}`;
+  const apiURL = `${config.app.host}getwatchlist/${userID}`;
 
   try {
     const response = await fetch(apiURL);
@@ -92,7 +93,7 @@ export const getAllWatchLists = async (userID) => {
 // Parameters: userID, watchListName
 
 export const addNewWatchList = async (userID, watchListName) => {
-  const apiURL = `${API_URL}addwatchlist`;
+  const apiURL = `${config.app.host}addwatchlist`;
 
   try {
     const response = await fetch(apiURL, {
@@ -121,7 +122,7 @@ export const addNewWatchList = async (userID, watchListName) => {
 // Parameters: StockData
 
 export const addNewStock = async (StockData) => {
-  const apiURL = `${API_URL}addstock`;
+  const apiURL = `${config.app.host}addstock`;
   try {
     const response = await fetch(apiURL, {
       method: "POST",
@@ -149,7 +150,7 @@ export const addNewStock = async (StockData) => {
 // Parameters: CompanyData
 
 export const addCompany = async (CompanyData) => {
-  const apiURL = `${API_URL}addcompany`;
+  const apiURL = `${config.app.host}addcompany`;
   try {
     const response = await fetch(apiURL, {
       method: "POST",
@@ -176,7 +177,7 @@ export const addCompany = async (CompanyData) => {
 // Parameters: ListData
 
 export const addWatchListItem = async (ListData) => {
-  const apiURL = `${API_URL}addWatchListRecord`;
+  const apiURL = `${config.app.host}addWatchListRecord`;
   try {
     const response = await fetch(apiURL, {
       method: "POST",

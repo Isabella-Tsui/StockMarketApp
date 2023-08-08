@@ -3,6 +3,7 @@ import InputField from "./InputField";
 import SubmitButton from "./SubmitButton";
 import { useNavigate } from "react-router-dom";
 import "./Authentication.css";
+import config from "../config";
 
 //This file contains the component that renders
 //the login form
@@ -55,7 +56,7 @@ const LoginForm = ({ setIsAuthenticated }) => {
         password: password,
       });
 
-      let res = await fetch("http://localhost:4000/login", {
+      let res = await fetch(`{config.app.host}/login`, {
         method: "post",
         headers: {
           Accept: "application/json",
