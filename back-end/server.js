@@ -33,12 +33,13 @@ const port = 4000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(
-  cors({
-    origin: "http://localhost:3000", // Replace this with the URL of your frontend app
-    credentials: true,
-  })
-);
+app.use(cors());
+// app.use(
+//   cors({
+//     origin: "http://localhost:3000", // Replace this with the URL of your frontend app
+//     credentials: true,
+//   })
+// );
 app.use(
   session({
     key: "asdf",
