@@ -8,7 +8,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import Home from "./pages/Home";
-import WishList from "./pages/WatchList";
+import WishList from "./pages/WatchList.js";
 import WatchList from "./pages/WishList.js";
 import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
