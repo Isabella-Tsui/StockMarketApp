@@ -12,7 +12,7 @@ const AddToWatchList = ({ addStockToWatchList }) => {
   const [list, setList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [watchListName, setWatchListName] = useState("");
-  const [watchListAdded, setWatchListAdded] = useState(false);
+  const [setWatchListAdded] = useState(false);
   const [messageAPI, contextHolder] = message.useMessage();
 
   // Function Name: handleAddWatchlist
@@ -48,7 +48,7 @@ const AddToWatchList = ({ addStockToWatchList }) => {
       setLoading(false);
     };
     fetchList();
-  }, [addWatchList]);
+  }, [addWatchList, userID]);
 
   if (loading) {
     return <Spin />;

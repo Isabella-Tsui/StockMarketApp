@@ -30,7 +30,7 @@ export default function WatchList({ isAuthenticated }) {
     // is not jarring to the user
     setTimeout(watchListItems, 500);
     setWatchListRemoved(false);
-  }, [watchListRemoved]);
+  }, [watchListRemoved, userId]);
 
   // Function Name: handleRemoveWatchlist
   // Purpose: Deletes a watch list and all the stocks associated

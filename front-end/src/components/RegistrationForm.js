@@ -52,12 +52,6 @@ const RegistrationForm = () => {
     setButtonDisabled(true);
 
     try {
-      let body = JSON.stringify({
-        username: username,
-        password: password,
-        name: name,
-      });
-
       let res = await fetch(`${config.app.host}register`, {
         method: "post",
         headers: {

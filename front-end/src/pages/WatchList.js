@@ -30,7 +30,7 @@ export default function WishList({ isAuthenticated }) {
 
     setTimeout(watchListStocks, 500);
     setStockRemoved(true);
-  }, [stockRemoved]);
+  }, [stockRemoved, watchListid]);
 
   // Function Name: handleRemoveStock
   // Purpose: Deletes a stock from the watch list

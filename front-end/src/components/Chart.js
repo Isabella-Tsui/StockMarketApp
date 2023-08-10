@@ -13,6 +13,31 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+// Function Name: convertUnixTimestampToDate
+// Purpose: Convert time into unix stamp
+// Parameters: unixTimestamp
+
+const convertUnixTimestampToDate = (unixTimestamp) => {
+  const milliseconds = unixTimestamp * 1000;
+  return new Date(milliseconds).toLocaleDateString();
+};
+
+// Function Name: formatData
+// Purpose: Take many arrays and turn them into data points
+// Parameters: data
+
+const formatData = (data) => {
+  return data.c.map((item, index) => {
+    return {
+      close: item.toFixed(2),
+      open: data.o[index].toFixed(2),
+      high: data.h[index].toFixed(2),
+      low: data.l[index].toFixed(2),
+      date: convertUnixTimestampToDate(data.t[index]),
+    };
+  });
+};
+
 //This file contains the component that renders the
 //historical data chart
 
@@ -38,31 +63,6 @@ const Chart = ({ quoteText }) => {
 
     fetchData();
   }, [quoteText]);
-
-  // Function Name: convertUnixTimestampToDate
-  // Purpose: Convert time into unix stamp
-  // Parameters: unixTimestamp
-
-  const convertUnixTimestampToDate = (unixTimestamp) => {
-    const milliseconds = unixTimestamp * 1000;
-    return new Date(milliseconds).toLocaleDateString();
-  };
-
-  // Function Name: formatData
-  // Purpose: Take many arrays and turn them into data points
-  // Parameters: data
-
-  const formatData = (data) => {
-    return data.c.map((item, index) => {
-      return {
-        close: item.toFixed(2),
-        open: data.o[index].toFixed(2),
-        high: data.h[index].toFixed(2),
-        low: data.l[index].toFixed(2),
-        date: convertUnixTimestampToDate(data.t[index]),
-      };
-    });
-  };
 
   //If the stock is not from the US display and error message
   //otherwise display the chart

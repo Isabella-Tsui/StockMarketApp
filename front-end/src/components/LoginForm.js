@@ -51,10 +51,6 @@ const LoginForm = ({ setIsAuthenticated }) => {
     setButtonDisabled(true);
 
     try {
-      let body = JSON.stringify({
-        username: username,
-        password: password,
-      });
       console.log(config.app.host);
       let res = await fetch(`${config.app.host}login`, {
         method: "post",

@@ -31,7 +31,7 @@ const QuoteCard = ({ quoteText, setStockData, setCompanyData }) => {
     };
 
     checkUSAMarket();
-  }, [quoteText]);
+  }, [quoteText, setStockData]);
 
   if (loading) return <Spin />;
 
