@@ -156,10 +156,8 @@ export default function Home({ isAuthenticated }) {
             />
           </div>
         </div>
-        <div class={styles.chartWrapper}>
-          <div class={styles.chart}>
-            <Chart quoteText={quoteText} />
-          </div>
+        <div class={styles.chart}>
+          <Chart quoteText={quoteText} />
         </div>
       </div>
 

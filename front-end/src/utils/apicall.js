@@ -62,9 +62,28 @@ export const handleSearch = async (input) => {
 // over the period of one year
 // Parameters: quoteText - unique ticker symbol
 
+// export const getHistoricalData = async (quoteText) => {
+//   const apiURL = `${baseURL}/stock/candle?symbol=${quoteText}&resolution=1&from=1679476980&to=1679649780&token=${API_KEY}`;
+//   console.log(apiURL);
+
+//   try {
+//     const response = await fetch(apiURL);
+//     const data = await response.json();
+
+//     return data;
+//   } catch (error) {
+//     console.log(error);
+//     return null;
+//   }
+// };
+
 export const getHistoricalData = async (quoteText) => {
-  const apiURL = `${baseURL}/stock/candle?symbol=${quoteText}&resolution=1&from=1679476980&to=1679649780&token=${API_KEY}`;
-  console.log(apiURL);
+  const oneYearInSecs = 31536000; // One year in seconds unix
+  console.log("one year ts", oneYearInSecs);
+  const endDate = Math.floor(Date.now() / 1000); // Current timestamp in seconds
+  console.log("date now", Date.now());
+  const startDate = Math.floor((endDate - oneYearInSecs) / 1000);
+  const apiURL = `${baseURL}/stock/candle?symbol=${quoteText}&resolution=1&from=${startDate}&to=${endDate}&token=${API_KEY}`;
 
   try {
     const response = await fetch(apiURL);

@@ -6,7 +6,7 @@ import { getCompany, getQuote } from "../utils/apicall";
 //when a user clicks on the eye icon in the stock list
 
 const ShowStockData = ({ data }) => {
-  console.log(data);
+  console.log("show stock data", data);
   const [stockData, setStockData] = useState({});
   const [companyData, setCompanyData] = useState({});
 
@@ -23,7 +23,7 @@ const ShowStockData = ({ data }) => {
     };
 
     fetchData();
-  }, []);
+  }, [data]); //changed
 
   //Display the data similarlly to that in the homepage
   return (

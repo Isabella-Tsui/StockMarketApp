@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "../pages/Home.module.css";
-import { Spin, Typography } from "antd";
-import * as FaIcons from "react-icons/fa";
+import { Spin, Typography, Card } from "antd";
 import { getHistoricalData } from "../utils/apicall";
 import { getCompany } from "../utils/apicall";
 import {
@@ -69,9 +68,11 @@ const Chart = ({ quoteText }) => {
   //otherwise display the chart
   if (!USAStock || USAStock.country !== "US") {
     return (
-      <Typography.Title level={5} style={{ margin: "0" }}>
-        You don't have access to historical data for {quoteText} stock.
-      </Typography.Title>
+      <Card className={styles.chartNoAccess}>
+        <Typography.Title level={5}>
+          You don't have access to historical data for {quoteText} stocks.
+        </Typography.Title>
+      </Card>
     );
   }
 
@@ -81,10 +82,7 @@ const Chart = ({ quoteText }) => {
     <div className={styles.chartContainer}>
       <Typography.Title level={2}>Historical Details</Typography.Title>
       <Typography.Title level={3}>
-        1 Year History of {quoteText} Stock{" "}
-        <span>
-          <FaIcons.FaChartLine />
-        </span>
+        1 Year History of {quoteText} Stocks{" "}
       </Typography.Title>
       {loading ? (
         <Spin />

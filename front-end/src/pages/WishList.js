@@ -39,14 +39,17 @@ export default function WatchList({ isAuthenticated }) {
 
   const handleRemoveWatchlist = async (watchlistID) => {
     try {
+      setLoading(true);
       await removeWatchListFromWatchLists(watchlistID);
       setWatchList((prevWatchLists) =>
         prevWatchLists.filter(
           (watchList) => watchList.watchlistID !== watchlistID
         )
       );
+      setLoading(false);
       setWatchListRemoved(true);
     } catch (error) {
+      setLoading(false);
       console.log("Error removing watch list");
     }
   };

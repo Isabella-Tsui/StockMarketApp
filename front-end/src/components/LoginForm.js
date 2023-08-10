@@ -55,8 +55,8 @@ const LoginForm = ({ setIsAuthenticated }) => {
         username: username,
         password: password,
       });
-
-      let res = await fetch(`{config.app.host}/login`, {
+      console.log(config.app.host);
+      let res = await fetch(`${config.app.host}login`, {
         method: "post",
         headers: {
           Accept: "application/json",

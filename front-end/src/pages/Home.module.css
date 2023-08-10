@@ -90,7 +90,8 @@
 /* This is the styling for the component that
 holds the stock and company data */
 
-.stocksDetail {
+.stocksDetail,
+.chartNoAccess {
   margin: 15px;
   display: flex;
   flex-direction: row;

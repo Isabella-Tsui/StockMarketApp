@@ -58,7 +58,7 @@ const RegistrationForm = () => {
         name: name,
       });
 
-      let res = await fetch("{config.app.host}register", {
+      let res = await fetch(`${config.app.host}register`, {
         method: "post",
         headers: {
           Accept: "application/json",

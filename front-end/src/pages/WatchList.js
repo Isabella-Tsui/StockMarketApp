@@ -38,13 +38,16 @@ export default function WishList({ isAuthenticated }) {
 
   const handleRemoveStock = async (stockID) => {
     try {
+      setLoading(true);
       await removeStockFromWatchList(stockID);
       setStocks((prevStocks) =>
         prevStocks.filter((stock) => stock.stockID !== stockID)
       );
+      setLoading(false);
       setStockRemoved(!stockRemoved);
     } catch (error) {
       console.error("Error while removing stock:", error);
+      setLoading(false);
     }
   };
 
