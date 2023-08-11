@@ -56,6 +56,7 @@ const AddToWatchList = ({ addStockToWatchList }) => {
 
   //Returns the form that displays a users watch lists
   //in the home page.
+
   return (
     <>
       {contextHolder}

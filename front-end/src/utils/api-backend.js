@@ -62,7 +62,7 @@ export const removeStockFromWatchList = async (stockID) => {
 
 export const getAllStocks = async (watchListid) => {
   const apiURL = `${config.app.host}getWatchListStocks/${watchListid}`;
-
+  console.log("apiURL getAllStocks", apiURL);
   try {
     const response = await fetch(apiURL);
     const data = await response.json();
@@ -78,6 +78,7 @@ export const getAllStocks = async (watchListid) => {
 
 export const getAllWatchLists = async (userID) => {
   const apiURL = `${config.app.host}getwatchlist/${userID}`;
+  console.log("apiURL getAllWatchLists", apiURL);
 
   try {
     const response = await fetch(apiURL);

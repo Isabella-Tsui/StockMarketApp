@@ -57,26 +57,6 @@ export const handleSearch = async (input) => {
   }
 };
 
-// Function Name: getHistoricalData
-// Purpose: Fetch all open, close, high, low, etc data for a stock
-// over the period of one year
-// Parameters: quoteText - unique ticker symbol
-
-// export const getHistoricalData = async (quoteText) => {
-//   const apiURL = `${baseURL}/stock/candle?symbol=${quoteText}&resolution=1&from=1679476980&to=1679649780&token=${API_KEY}`;
-//   console.log(apiURL);
-
-//   try {
-//     const response = await fetch(apiURL);
-//     const data = await response.json();
-
-//     return data;
-//   } catch (error) {
-//     console.log(error);
-//     return null;
-//   }
-// };
-
 export const getHistoricalData = async (quoteText) => {
   const oneYearInSecs = 31536000; // One year in seconds unix
   console.log("one year ts", oneYearInSecs);
