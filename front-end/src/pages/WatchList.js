@@ -3,14 +3,20 @@ import styles from "./Home.module.css";
 import { Divider, Spin, Modal } from "antd";
 import * as FaIcons from "react-icons/fa";
 import { useParams } from "react-router-dom";
-import { getAllStocks, removeStockFromWatchList } from "../utils/api-backend";
+import {
+  getAllWatchListIDStocks,
+  removeStockFromWatchList,
+} from "../utils/api-backend";
 import ShowStockData from "./ShowStockData";
 
 //This file contains the component which renders all the stocks
 //in a watch list
 
+//Previously used get all stocks here
+
 export default function WishList({ isAuthenticated }) {
   const { watchListid } = useParams();
+  console.log("watchlist id", watchListid);
   const [stocks, setStocks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [stockRemoved, setStockRemoved] = useState(false);
@@ -20,7 +26,7 @@ export default function WishList({ isAuthenticated }) {
   //Re-render a component when a stock is deleted from the list
   useEffect(() => {
     const watchListStocks = async () => {
-      const response = await getAllStocks(watchListid);
+      const response = await getAllWatchListIDStocks(watchListid);
       setStocks(response);
       setLoading(false);
     };

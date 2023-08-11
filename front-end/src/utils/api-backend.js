@@ -60,8 +60,8 @@ export const removeStockFromWatchList = async (stockID) => {
 // Purpose: Fetch all the stocks for a certain watch list
 // Parameters: watchListid
 
-export const getAllStocks = async (watchListid) => {
-  const apiURL = `${config.app.host}getWatchListStocks/${watchListid}`;
+export const getAllStocks = async (watchListId) => {
+  const apiURL = `${config.app.host}getWatchListStocks/${watchListId}`;
   console.log("apiURL getAllStocks", apiURL);
   try {
     const response = await fetch(apiURL);

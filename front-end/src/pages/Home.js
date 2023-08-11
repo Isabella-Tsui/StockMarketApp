@@ -115,6 +115,9 @@ export default function Home({ isAuthenticated }) {
   //to a watch list
   return (
     <>
+      <p style={{ color: "white" }}>
+        Testing if this thing is actually updating when I redeploy
+      </p>
       {contextHolder}
       {isAuthenticated}
       <div className={styles.home}>
