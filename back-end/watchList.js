@@ -106,7 +106,7 @@ const addWatchListRecord = async (req, res) => {
 };
 
 // Function Name: getAllWatchListRecords
-// Purpose: Get all watch lists against a watchlist ID
+// Purpose: Get all the watch list stocks against a watchlist ID
 // Parameters: req, res
 
 const getAllWatchListRecords = async (req, res) => {
