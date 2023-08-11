@@ -1,5 +1,4 @@
 import config from "../config";
-// const API_URL = "http://localhost:4000/";
 
 //This file contains all the front end API calls
 
@@ -9,10 +8,13 @@ import config from "../config";
 
 export const getAllWatchListIDStocks = async (watchListID) => {
   const apiUrl = `${config.app.host}getAllWatchListRecords/${watchListID}`;
+  console.log("In getAllWatchListIDStocks ");
+  // const apiUrl = `http://isabellacmtsui.com/isabella-tsui-server/api/getAllWatchListRecords/${watchListID}`;
 
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();
+    console.log("data.lists", data);
     return data.lists;
   } catch (e) {
     console.log(e);
@@ -60,17 +62,17 @@ export const removeStockFromWatchList = async (stockID) => {
 // Purpose: Fetch all the stocks for a certain watch list
 // Parameters: watchListid
 
-export const getAllStocks = async (watchListId) => {
-  const apiURL = `${config.app.host}getWatchListStocks/${watchListId}`;
-  console.log("apiURL getAllStocks", apiURL);
-  try {
-    const response = await fetch(apiURL);
-    const data = await response.json();
-    return data.data;
-  } catch (e) {
-    return e;
-  }
-};
+// export const getAllStocks = async (watchListId) => {
+//   const apiURL = `${config.app.host}getWatchListStocks/${watchListId}`;
+//   console.log("apiURL getAllStocks", apiURL);
+//   try {
+//     const response = await fetch(apiURL);
+//     const data = await response.json();
+//     return data.data;
+//   } catch (e) {
+//     return e;
+//   }
+// };
 
 // Function Name: getAllWatchLists
 // Purpose: Fetch all the watch lists for a certain user

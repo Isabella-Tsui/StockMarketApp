@@ -65,7 +65,7 @@ function App() {
           element={<RegistrationPage isAuthenticated={isAuthenticated} />}
         />
         <Route
-          path="/wishlist/:watchListid"
+          path="/wishlist/:id"
           element={<WishList isAuthenticated={isAuthenticated} />}
         />
         <Route

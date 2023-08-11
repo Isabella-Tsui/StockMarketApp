@@ -15,8 +15,8 @@ import ShowStockData from "./ShowStockData";
 //Previously used get all stocks here
 
 export default function WishList({ isAuthenticated }) {
-  const { watchListid } = useParams();
-  console.log("watchlist id", watchListid);
+  const { id } = useParams();
+  console.log("watchlist id", id);
   const [stocks, setStocks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [stockRemoved, setStockRemoved] = useState(false);
@@ -26,17 +26,18 @@ export default function WishList({ isAuthenticated }) {
   //Re-render a component when a stock is deleted from the list
   useEffect(() => {
     const watchListStocks = async () => {
-      const response = await getAllWatchListIDStocks(watchListid);
+      const response = await getAllWatchListIDStocks(id);
       setStocks(response);
+      console.log("get all stocks in watch loist response: ", response);
       setLoading(false);
     };
 
     // Set timmer so that if the API reponse is fast the transition
     // is not jarring to the user
 
-    setTimeout(watchListStocks, 500);
+    setTimeout(watchListStocks, 1000);
     setStockRemoved(true);
-  }, [stockRemoved, watchListid]);
+  }, [stockRemoved, id]);
 
   // Function Name: handleRemoveStock
   // Purpose: Deletes a stock from the watch list
@@ -44,16 +45,14 @@ export default function WishList({ isAuthenticated }) {
 
   const handleRemoveStock = async (stockID) => {
     try {
-      setLoading(true);
       await removeStockFromWatchList(stockID);
       setStocks((prevStocks) =>
         prevStocks.filter((stock) => stock.stockID !== stockID)
       );
-      setLoading(false);
+
       setStockRemoved(!stockRemoved);
     } catch (error) {
       console.error("Error while removing stock:", error);
-      setLoading(false);
     }
   };
 

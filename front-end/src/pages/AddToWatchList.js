@@ -12,7 +12,6 @@ const AddToWatchList = ({ addStockToWatchList }) => {
   const [list, setList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [watchListName, setWatchListName] = useState("");
-  const [setWatchListAdded] = useState(false);
   const [messageAPI, contextHolder] = message.useMessage();
 
   // Function Name: handleAddWatchlist
@@ -24,8 +23,7 @@ const AddToWatchList = ({ addStockToWatchList }) => {
 
     if (response) {
       setWatchListName("");
-      setAddWatchList(false);
-      setAddWatchList(!setWatchListAdded);
+      setAddWatchList(!addWatchList);
       message.open({
         type: "success",
         content: "Watch list added successfully",

@@ -13,6 +13,7 @@ import {
 
 export default function WatchList({ isAuthenticated }) {
   const userId = sessionStorage.getItem("userID");
+  console.log("user ID in watch list", userId);
   const [watchList, setWatchList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [watchListRemoved, setWatchListRemoved] = useState(false);
@@ -28,7 +29,7 @@ export default function WatchList({ isAuthenticated }) {
 
     // Set timmer so that if the API reponse is fast the transition
     // is not jarring to the user
-    setTimeout(watchListItems, 500);
+    setTimeout(watchListItems, 1000);
     setWatchListRemoved(false);
   }, [watchListRemoved, userId]);
 
@@ -39,17 +40,14 @@ export default function WatchList({ isAuthenticated }) {
 
   const handleRemoveWatchlist = async (watchlistID) => {
     try {
-      setLoading(true);
       await removeWatchListFromWatchLists(watchlistID);
       setWatchList((prevWatchLists) =>
         prevWatchLists.filter(
           (watchList) => watchList.watchlistID !== watchlistID
         )
       );
-      setLoading(false);
       setWatchListRemoved(true);
     } catch (error) {
-      setLoading(false);
       console.log("Error removing watch list");
     }
   };
