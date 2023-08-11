@@ -110,7 +110,8 @@ const addWatchListRecord = async (req, res) => {
 // Parameters: req, res
 
 const getAllWatchListRecords = async (req, res) => {
-  const watchlist_id = req.params.watchlistID;
+  // const watchlist_id = req.params.watchlistID; //DID YOU FUCK THIS UPPPP
+  const watchlist_id = req.params.id;
   console.log("made it to getAllWatchlist records");
   connection.query(
     `SELECT ws.watchlist_id, ws.stock_id, s.*, c.*
