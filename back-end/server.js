@@ -70,11 +70,11 @@ app.post("/addStock", addAStockIntoDB);
 app.post("/addCompany", addCompanyData);
 app.post("/addWatchListRecord", addWatchListRecord);
 app.get("/getAllWatchListRecords/:id", getAllWatchListRecords);
-app.get("/getWatchListStocks/:watchlistId", getWatchListStocks);
+// app.get("/getWatchListStocks/:watchlistId", getWatchListStocks);
 
 //Removal endpoints
-app.delete("/removeStock/:stockID", removeStock);
-app.delete("/removeWatchlist/:watchlistId", removeWatchlist);
+app.delete("/removeStock/:stockID", removeStock); //need to fix
+app.delete("/removeWatchlist/:watchlistId", removeWatchlist); //need to fix
 
 // NOTE: all api endpoints must be ABOVE this call
 app.listen(port, () => {
