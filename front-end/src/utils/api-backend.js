@@ -80,7 +80,7 @@ export const removeStockFromWatchList = async (stockID) => {
 
 export const getAllWatchLists = async (userID) => {
   const apiURL = `${config.app.host}getwatchlist/${userID}`;
-  console.log("apiURL getAllWatchLists", apiURL);
+  console.log("apiURL getAllWatchLists ==>", apiURL);
 
   try {
     const response = await fetch(apiURL);
