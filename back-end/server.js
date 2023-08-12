@@ -58,6 +58,10 @@ app.use(
 
 connection.connect();
 
+app.get('/', (req, res) => {
+  res.send('Server is healthy.');
+});
+
 // Authentication endpoints
 app.post("/login", login);
 app.post("/register", register);
