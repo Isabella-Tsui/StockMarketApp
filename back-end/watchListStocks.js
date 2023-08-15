@@ -31,8 +31,6 @@ const addAStockIntoDB = async (req, res) => {
 
     async (err, data, fields) => {
       if (err) {
-        console.log(err);
-        console.log("Error while inserting stock data");
         res.json({
           success: false,
           msg: "Error while inserting stock data",
@@ -93,8 +91,6 @@ const addCompanyData = async (req, res) => {
 
     async (err, data, fields) => {
       if (err) {
-        console.log(err);
-        console.log("Error while inserting Company data");
         res.json({
           success: false,
           msg: "Error while inserting Company data",
@@ -115,16 +111,10 @@ const addCompanyData = async (req, res) => {
 
 const removeStock = async (req, res) => {
   const stockID = req.params.stockID;
-  console.log("stockID", stockID);
-  console.log(
-    "query: ",
-    `DELETE FROM watchlist_stocks WHERE stock_id like '${stockID}';`
-  );
   connection.query(
     `DELETE FROM watchlist_stocks WHERE stock_id like '${stockID}';`,
     async (err, data, fields) => {
       if (err) {
-        console.log("Error deleting stock:", err);
         res.json({
           success: false,
           msg: "An error has occurred, please try again MADE IT HERE",

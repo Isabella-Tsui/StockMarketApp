@@ -1,11 +1,10 @@
 const connection = require("./database/databaseConnection.js");
-const { login, register, logout } = require("./authentication");
+const { login, register } = require("./authentication");
 const {
   getWatchList,
   addWatchList,
   addWatchListRecord,
   getAllWatchListRecords,
-  getWatchListStocks,
   removeWatchlist,
 } = require("./watchList");
 const bcrypt = require("bcrypt");
@@ -34,12 +33,6 @@ const port = 4000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-// app.use(
-//   cors({
-//     origin: "http://localhost:3000", // Replace this with the URL of your frontend app
-//     credentials: true,
-//   })
-// );
 app.use(
   session({
     key: "asdf",
@@ -58,14 +51,13 @@ app.use(
 
 connection.connect();
 
-app.get('/', (req, res) => {
-  res.send('Server is healthy.');
+app.get("/", (req, res) => {
+  res.send("Server is healthy.");
 });
 
 // Authentication endpoints
 app.post("/login", login);
 app.post("/register", register);
-app.post("/logout", logout);
 
 //Insertion endpoints
 app.get("/getwatchlist/:username", getWatchList);
@@ -74,11 +66,10 @@ app.post("/addStock", addAStockIntoDB);
 app.post("/addCompany", addCompanyData);
 app.post("/addWatchListRecord", addWatchListRecord);
 app.get("/getAllWatchListRecords/:id", getAllWatchListRecords);
-// app.get("/getWatchListStocks/:watchlistId", getWatchListStocks);
 
 //Removal endpoints
-app.delete("/removeStock/:stockID", removeStock); //need to fix
-app.delete("/removeWatchlist/:watchlistId", removeWatchlist); //need to fix
+app.delete("/removeStock/:stockID", removeStock);
+app.delete("/removeWatchlist/:watchlistId", removeWatchlist);
 
 // NOTE: all api endpoints must be ABOVE this call
 app.listen(port, () => {

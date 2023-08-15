@@ -14,8 +14,6 @@ const getWatchList = async (req, res) => {
     `SELECT * FROM watch_lists WHERE userid = '${userName}';`,
     async (err, data, fields) => {
       if (err) {
-        console.log("got to err msg");
-        console.log(err);
         res.json({
           success: false,
           msg: "An error has occurred, please try again",
@@ -46,20 +44,16 @@ const addWatchList = async (req, res) => {
   const name = req.body.watchListName;
   const userid = req.body.userID;
 
-  console.log(name, userid);
-
   connection.query(
     `INSERT INTO watch_lists (watchlist_name, userid ) VALUES ('${name}', '${userid}')`,
     async (err, data, fields) => {
       if (err) {
-        console.log("got to err msg");
         res.json({
           success: false,
           msg: "An error has occurred, please try again",
         });
         return;
       }
-      console.log(data);
 
       if (data) {
         res.json({
@@ -89,8 +83,6 @@ const addWatchListRecord = async (req, res) => {
     `INSERT INTO watchlist_stocks (watchlist_id ,stock_id , company_id ) VALUE(${watchlist_id}, '${stock_id}', '${company_id}')`,
     async (err, data, fields) => {
       if (err) {
-        console.log(err);
-        console.log("Error while inserting WatchListData data");
         res.json({
           success: false,
           msg: "Error while inserting Company data",
@@ -112,7 +104,6 @@ const addWatchListRecord = async (req, res) => {
 const getAllWatchListRecords = async (req, res) => {
   // const watchlist_id = req.params.watchlistID; //DID YOU FUCK THIS UPPPP
   const watchlist_id = req.params.id;
-  console.log("made it to getAllWatchlist records");
   connection.query(
     `SELECT ws.watchlist_id, ws.stock_id, s.*, c.*
     FROM watchlist_stocks AS ws
@@ -122,8 +113,6 @@ const getAllWatchListRecords = async (req, res) => {
     `,
     async (err, data, fields) => {
       if (err) {
-        console.log(err);
-        console.log("Error while inserting Company data");
         res.json({
           success: false,
           msg: "Error while inserting Company data",
@@ -133,7 +122,6 @@ const getAllWatchListRecords = async (req, res) => {
           success: true,
           lists: data,
         });
-        console.log("query data", data);
       }
     }
   );
@@ -150,7 +138,6 @@ const getWatchListStocks = async (req, res) => {
     `SELECT * FROM watchlist_stocks WHERE watchlist_id = '${watchlistId}';`,
     async (err, data, fields) => {
       if (err) {
-        console.log("Error fetching watchlist stocks:", err);
         res.json({
           success: false,
           msg: "An error has occurred, please try again",
@@ -179,14 +166,12 @@ const getWatchListStocks = async (req, res) => {
 
 const removeWatchlist = async (req, res) => {
   const watchlistID = req.params.watchlistId;
-  console.log("watchlistID", watchlistID);
 
   connection.query(
     `DELETE FROM watch_lists WHERE watchlist_id like '${watchlistID}';`,
 
     async (err, data, fields) => {
       if (err) {
-        console.log("Error deleting stock:", err);
         res.json({
           success: false,
           msg: "An error has occurred, please try again MADE IT HERE",
