@@ -88,7 +88,7 @@
 }
 
 /* This is the styling for the component that
-holds the stock and company data */
+holds the stock and company data within the home component */
 
 .stocksDetail,
 .chartNoAccess {
@@ -142,7 +142,6 @@ holds the stock and company data */
   border-radius: 10px;
 }
 
-/* WishList.js CSS */
 .container {
   display: flex;
   flex-direction: column;
@@ -154,20 +153,12 @@ holds the stock and company data */
   text-align: center;
 }
 
-/* WishList.js CSS */
 .container h1 {
   margin: 0;
   padding: 0;
   color: rgb(53, 54, 97);
 }
 
-/* WishList.js CSS
-.container h1 span {
-  /* color: rgb(53, 54, 97);
-  font-size: 30px; 
-} */
-
-/* WishList.js CSS */
 .wishList ul {
   list-style: none;
   padding: 0;
@@ -175,7 +166,6 @@ holds the stock and company data */
   width: 100%;
 }
 
-/* WishList.js CSS */
 .wishList ul li {
   margin: 0;
   display: flex;
@@ -219,7 +209,7 @@ holds the stock and company data */
   color: rgb(53, 54, 97);
 }
 
-/* AddtoWatchList.js CSS */
+/* START AddtoWatchList.js CSS */
 .addtoWatchList {
   background-color: rgb(255, 255, 255) !important;
   border: 1px solid black;
@@ -231,7 +221,6 @@ holds the stock and company data */
   flex-direction: column;
 }
 
-/* AddtoWatchList.js CSS */
 .addtoWatchList button {
   border: none;
   outline: none;
@@ -243,13 +232,11 @@ holds the stock and company data */
   border-radius: 10px;
 }
 
-/* AddtoWatchList.js CSS */
 .addtoWatchList button:hover {
   background-color: rgba(53, 54, 94, 0.8);
   transform: scale(0.9);
 }
 
-/* AddtoWatchList.js CSS */
 .addtoWatchList ul {
   list-style: none;
   padding: 0;
@@ -258,7 +245,6 @@ holds the stock and company data */
   width: 100%;
 }
 
-/* AddtoWatchList.js CSS */
 .addtoWatchList ul li {
   color: white;
   cursor: pointer;
@@ -271,16 +257,14 @@ holds the stock and company data */
   text-align: left;
 }
 
-/* AddtoWatchList.js CSS */
 .singleItem {
   background-color: #cbc8c8;
 }
-/* AddtoWatchList.js CSS */
+
 .addtoWatchList ul li {
   margin: 0;
 }
 
-/* AddtoWatchList.js CSS */
 .addtoWatchList ul li,
 .addWatchList,
 modalButton {
@@ -290,7 +274,6 @@ modalButton {
   align-items: flex-start;
 }
 
-/* AddtoWatchList.js CSS */
 .addWatchList input {
   padding: 10px;
   border: none;
@@ -298,7 +281,9 @@ modalButton {
   font-size: 16px;
   border-bottom: 1px solid black;
 }
-/* END OF HOME WATCH LIST HOME CSS */
+
+/* END OF AddtoWatchList.js CSS*/
+/* END OF HOME CSS */
 
 /* START OF CHART HOME CSS */
 .chart {
@@ -315,5 +300,4 @@ modalButton {
   overflow: auto;
   height: 100%;
 }
-
-/* END OF CHART HOME CSS */
+/* END OF CHART CSS */

@@ -82,7 +82,7 @@ const Chart = ({ quoteText }) => {
     <div className={styles.chartContainer}>
       <Typography.Title level={2}>Historical Details</Typography.Title>
       <Typography.Title level={3}>
-        1 Year History of {quoteText} Stocks{" "}
+        1 Month History of {quoteText} Stocks{" "}
       </Typography.Title>
       {loading ? (
         <Spin />

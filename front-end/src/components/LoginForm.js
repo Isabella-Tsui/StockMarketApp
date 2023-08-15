@@ -44,14 +44,10 @@ const LoginForm = ({ setIsAuthenticated }) => {
   // Parameters: None
 
   const doLogin = async () => {
-    console.log(username);
-    console.log(password);
-
     if (!username || !password) return;
     setButtonDisabled(true);
 
     try {
-      console.log(config.app.host);
       let res = await fetch(`${config.app.host}login`, {
         method: "post",
         headers: {
@@ -65,9 +61,6 @@ const LoginForm = ({ setIsAuthenticated }) => {
       });
 
       let result = await res.json();
-      console.log("result: ", { result });
-      console.log("result.username: ", result.username);
-      console.log("result.success: ", result.success);
 
       if (result && result.success) {
         sessionStorage.setItem("isAuthenticated", "true");
@@ -79,7 +72,6 @@ const LoginForm = ({ setIsAuthenticated }) => {
         setLoginError(result.msg);
       }
     } catch (e) {
-      console.log(e);
       resetLoginForm();
       setLoginError("An error occurred. Please try again.");
     }

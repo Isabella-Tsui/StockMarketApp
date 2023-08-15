@@ -5,7 +5,6 @@ import styles from "../pages/Home.module.css";
 //renders the results for a users search inpt
 
 const Suggestions = ({ results, setQuoteText, setResults }) => {
-  console.log(results);
   return (
     <div className={styles.searchResults}>
       <ul>

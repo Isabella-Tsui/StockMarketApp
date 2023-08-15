@@ -9,11 +9,10 @@ import {
 } from "../utils/api-backend";
 
 //This file contains the component which renders all the watch lists
-//that a user has
+//under a certain user
 
 export default function WatchList({ isAuthenticated }) {
   const userId = sessionStorage.getItem("userID");
-  console.log("user ID in watch list", userId);
   const [watchList, setWatchList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [watchListRemoved, setWatchListRemoved] = useState(false);
@@ -47,9 +46,7 @@ export default function WatchList({ isAuthenticated }) {
         )
       );
       setWatchListRemoved(true);
-    } catch (error) {
-      console.log("Error removing watch list");
-    }
+    } catch (error) {}
   };
 
   if (loading)
@@ -65,6 +62,7 @@ export default function WatchList({ isAuthenticated }) {
 
   //Check is a user has watch lists, if they don't return a message
   //otherwise display all their lists
+
   if (watchList === undefined || watchList.length === 0) {
     return (
       <div className={styles.home}>

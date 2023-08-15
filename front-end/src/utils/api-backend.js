@@ -8,16 +8,11 @@ import config from "../config";
 
 export const getAllWatchListIDStocks = async (watchListID) => {
   const apiUrl = `${config.app.host}getAllWatchListRecords/${watchListID}`;
-  console.log("In getAllWatchListIDStocks ");
-  // const apiUrl = `http://isabellacmtsui.com/isabella-tsui-server/api/getAllWatchListRecords/${watchListID}`;
-
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();
-    console.log("data.lists", data);
     return data.lists;
   } catch (e) {
-    console.log(e);
     return "Error Fetching Data";
   }
 };
@@ -58,29 +53,12 @@ export const removeStockFromWatchList = async (stockID) => {
   }
 };
 
-// Function Name: getAllStocks
-// Purpose: Fetch all the stocks for a certain watch list
-// Parameters: watchListid
-
-// export const getAllStocks = async (watchListId) => {
-//   const apiURL = `${config.app.host}getWatchListStocks/${watchListId}`;
-//   console.log("apiURL getAllStocks", apiURL);
-//   try {
-//     const response = await fetch(apiURL);
-//     const data = await response.json();
-//     return data.data;
-//   } catch (e) {
-//     return e;
-//   }
-// };
-
 // Function Name: getAllWatchLists
 // Purpose: Fetch all the watch lists for a certain user
 // Parameters: userID
 
 export const getAllWatchLists = async (userID) => {
   const apiURL = `${config.app.host}getwatchlist/${userID}`;
-  console.log("apiURL getAllWatchLists ==>", apiURL);
 
   try {
     const response = await fetch(apiURL);
@@ -138,7 +116,6 @@ export const addNewStock = async (StockData) => {
 
     const data = await response.json();
     if (data.success) {
-      console.log(data.StockId);
       return data.StockId;
     } else {
       return null;

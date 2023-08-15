@@ -13,7 +13,6 @@ import { IconContext } from "react-icons";
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
   const logoutStatus = sessionStorage.getItem("isAuthenticated") === "true";
-  console.log("logutStatus", logoutStatus);
   const navigate = useNavigate();
 
   // Function Name: showSidebar
@@ -33,65 +32,6 @@ function Navbar() {
     sessionStorage.setItem("userID", "");
     navigate("/login");
   };
-
-  //Returns the side bar and the top menu
-  //   return (
-  //     <>
-  //       {logoutStatus ? null : (
-  //         <IconContext.Provider value={{ color: "#fff" }}>
-  //           <nav>
-  //             <div className="navbar">
-  //               <Link to="#" className="menu-bars">
-  //                 <FaIcons.FaBars onClick={showSidebar} />
-  //               </Link>
-  //               <div className="logout">
-  //                 <Button
-  //                   type="primary"
-  //                   style={{
-  //                     margin: "0px 16px",
-  //                     boxShadow: "0 4px 8px 0 rgba(0,0,0,0.1)",
-  //                     backgroundColor: "#f5f5f5",
-  //                     color: "#000000",
-  //                     borderColor: "#f5f5f5",
-  //                   }}
-  //                   onClick={() => {
-  //                     handleLogout();
-  //                   }}
-  //                 >
-  //                   <div style={{ display: "flex", justifyContent: "center" }}>
-  //                     Logout
-  //                   </div>
-  //                 </Button>
-  //               </div>
-  //             </div>
-
-  //             <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
-  //               <ul className="nav-menu-items" onClick={showSidebar}>
-  //                 <li className="navbar-toggle">
-  //                   <Link to="#" className="x-out">
-  //                     <AiIcons.AiOutlineClose />
-  //                   </Link>
-  //                 </li>
-  //                 <div className="sideBarr">
-  //                   {SidebarData.map((item, index) => {
-  //                     return (
-  //                       <li key={index} className={item.className}>
-  //                         <Link to={item.path}>
-  //                           {item.icon}
-  //                           <span>{item.title}</span>
-  //                         </Link>
-  //                       </li>
-  //                     );
-  //                   })}
-  //                 </div>
-  //               </ul>
-  //             </nav>
-  //           </nav>
-  //         </IconContext.Provider>
-  //       )}
-  //     </>
-  //   );
-  // }
 
   return (
     <>

@@ -44,10 +44,7 @@ const Input = ({ setQuoteText }) => {
         <button
           onClick={async () => {
             const data = await handleSearch(input);
-            console.log(data);
             setResults(data);
-
-            console.log(results);
           }}
           className={styles.searchBtn}
         >

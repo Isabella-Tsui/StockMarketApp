@@ -63,7 +63,6 @@ export default function Home({ isAuthenticated }) {
     };
 
     const companyID = await addCompany(retrivedCompanyData);
-    console.log("companyID", companyID);
     return companyID;
   };
 
@@ -73,7 +72,6 @@ export default function Home({ isAuthenticated }) {
 
   const addStockToWatchList = async (id) => {
     const flag = sessionStorage.getItem("USStock", "true");
-    console.log("flag", flag);
     if (flag !== "true") {
       messageAPI.error(
         "You can only add stocks from the US to your watch lists."
@@ -87,7 +85,6 @@ export default function Home({ isAuthenticated }) {
       if (companyID) {
         await addWatchList(id, stockID, companyID);
       } else {
-        console.log("error");
       }
     }
   };
@@ -106,13 +103,13 @@ export default function Home({ isAuthenticated }) {
     if (response) {
       messageAPI.success("stock added successfully");
     } else {
-      console.log("stock not added successfully");
     }
   };
 
   //Here we are returning the stock data (left), company data (right),
   //and the Modal which renders the component to create and add stocks
   //to a watch list
+
   return (
     <>
       {contextHolder}

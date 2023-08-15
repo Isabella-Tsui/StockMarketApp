@@ -16,7 +16,6 @@ import ShowStockData from "./ShowStockData";
 
 export default function WishList({ isAuthenticated }) {
   const { id } = useParams();
-  console.log("watchlist id", id);
   const [stocks, setStocks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [stockRemoved, setStockRemoved] = useState(false);
@@ -28,7 +27,6 @@ export default function WishList({ isAuthenticated }) {
     const watchListStocks = async () => {
       const response = await getAllWatchListIDStocks(id);
       setStocks(response);
-      console.log("get all stocks in watch loist response: ", response);
       setLoading(false);
     };
 

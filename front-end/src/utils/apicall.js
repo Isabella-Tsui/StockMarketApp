@@ -1,8 +1,7 @@
 const baseURL = "https://finnhub.io/api/v1/";
 const API_KEY = "cj23bg1r01qi64tfujk0cj23bg1r01qi64tfujkg";
 
-//This file contains all the API calls made to the
-//external database Finnhub
+//This file contains all the API calls made to the external database Finnhub
 
 // Function Name: getQuote
 // Purpose: Fetch all the open, close, high, low, etc data for a stock
@@ -16,7 +15,6 @@ export const getQuote = async (quoteText) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log(error);
     return null;
   }
 };
@@ -33,7 +31,6 @@ export const getCompany = async (quoteText) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log(error);
     return null;
   }
 };
@@ -44,7 +41,6 @@ export const getCompany = async (quoteText) => {
 
 export const handleSearch = async (input) => {
   const apiURL = `${baseURL}search?q=${input}&token=${API_KEY}`;
-  console.log(apiURL);
 
   try {
     const response = await fetch(apiURL);
@@ -52,17 +48,18 @@ export const handleSearch = async (input) => {
 
     return data.result;
   } catch (error) {
-    console.log(error);
     return null;
   }
 };
 
+// Function Name: getHistoricalData
+// Purpose: Fetches all the data to populate the chart
+// Parameters: quoteText - unique ticker symbol
+
 export const getHistoricalData = async (quoteText) => {
-  const oneYearInSecs = 31536000; // One year in seconds unix
-  console.log("one year ts", oneYearInSecs);
-  const endDate = Math.floor(Date.now() / 1000); // Current timestamp in seconds
-  console.log("date now", Date.now());
-  const startDate = Math.floor((endDate - oneYearInSecs) / 1000);
+  const oneMonth = 31536000;
+  const endDate = Math.floor(Date.now() / 1000);
+  const startDate = endDate - oneMonth;
   const apiURL = `${baseURL}/stock/candle?symbol=${quoteText}&resolution=1&from=${startDate}&to=${endDate}&token=${API_KEY}`;
 
   try {
@@ -71,7 +68,6 @@ export const getHistoricalData = async (quoteText) => {
 
     return data;
   } catch (error) {
-    console.log(error);
     return null;
   }
 };

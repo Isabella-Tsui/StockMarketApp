@@ -38,11 +38,8 @@ const AddToWatchList = ({ addStockToWatchList }) => {
   useEffect(() => {
     const fetchList = async () => {
       setLoading(true);
-      console.log("userID", userID);
       const data = await getAllWatchLists(userID);
-      console.log("API Response Data:", data);
       setList(data);
-      console.log("list data: ", data);
       setLoading(false);
     };
     fetchList();
