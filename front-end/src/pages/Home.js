@@ -29,7 +29,7 @@ export default function Home({ isAuthenticated }) {
 
   const addStockData = async () => {
     const data = {
-      stock_id: quoteText, //Math.random().toString(35).substring(7),
+      stock_id: quoteText,
       current_price: stockData.c,
       change: stockData.d,
       percentage_change: stockData.dp,
