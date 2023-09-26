@@ -1,4 +1,4 @@
-# MyStock
+# MyStock 📈
 
 ![MyStock Web APP](https://github.com/Isabella-Tsui/StockMarketApp/blob/main/front-end/src/images/readme.png?raw=true)
 
@@ -8,11 +8,11 @@ MyStock is a stock market app that dynamically displays historical data charts, 
 
 ## Current Functionalities
 
-:✔: Displays the most current finanical data of a given stock
-:✔:Displays the most current company data of a given stock
-:✔: Visualize 2 months of worth of stock data through charts
-:✔: Add and remove watch lists
-:✔: Add and remove stocks from watch lists
+- :✔: Display the most current finanical data of a given stock
+- :✔: Display the most current company data of a given stock
+- :✔: Visualize 2 months of worth of stock data through charts
+- :✔: Add and remove watch lists
+- :✔: Add and remove stocks from watch lists
 
 ## Future Improvements
 
