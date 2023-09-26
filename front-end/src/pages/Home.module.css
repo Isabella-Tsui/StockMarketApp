@@ -1,4 +1,19 @@
-/* START OF HOME CSS */
+/* =====================================================================
+
+
+   TOC:
+   a. Home CSS
+   b. Data Display CSS
+   c. WishList CSS
+   d. WatchList and WishList Shared CSS
+   e. AddtoWatchList CSS
+   f. Chart CSS
+
+===================================================================== */
+
+/* ------------------------------------------------------------------ */
+/* a. Home CSS
+/* ------------------------------------------------------------------ */
 
 .home {
   background-image: url(../images/appBG.png);
@@ -87,8 +102,9 @@
   cursor: pointer;
 }
 
-/* This is the styling for the component that
-holds the stock and company data within the home component */
+/* ------------------------------------------------------------------ */
+/* b. Data Display CSS
+/* ------------------------------------------------------------------ */
 
 .stocksDetail,
 .chartNoAccess {
@@ -128,9 +144,9 @@ holds the stock and company data within the home component */
   border-bottom: 1px solid black;
 }
 
-/* END  OF HOME CSS */
-
-/* WishList.js CSS */
+/* ------------------------------------------------------------------ */
+/* c. WishList CSS
+/* ------------------------------------------------------------------ */
 
 .wishList {
   display: flex;
@@ -178,7 +194,10 @@ holds the stock and company data within the home component */
   margin-bottom: 10px;
 }
 
-/* WatchList.js and WishList.js CSS */
+/* ------------------------------------------------------------------ */
+/* d. WatchList and WishList Shared CSS
+/* ------------------------------------------------------------------ */
+
 .icons {
   background-color: transparent;
   display: flex;
@@ -186,30 +205,29 @@ holds the stock and company data within the home component */
   padding-left: 20px;
 }
 
-/* WatchList.js and WishList.js CSS */
 .icons > * {
   font-size: 20px;
   cursor: pointer;
   margin: 0 20px;
 }
 
-/* WatchList.js and WishList.js CSS */
 .wishList ul li:hover {
   background-color: rgb(228, 227, 227);
   cursor: pointer;
 }
 
-/* WatchList.js and WishList.js CSS */
 .icons > *:hover {
   transform: scale(0.9);
 }
 
-/* WatchList.js CSS */
 .stocksData {
   color: rgb(53, 54, 97);
 }
 
-/* START AddtoWatchList.js CSS */
+/* ------------------------------------------------------------------ */
+/* e. AddtoWatchList CSS
+/* ------------------------------------------------------------------ */
+
 .addtoWatchList {
   background-color: rgb(255, 255, 255) !important;
   border: 1px solid black;
@@ -282,10 +300,10 @@ modalButton {
   border-bottom: 1px solid black;
 }
 
-/* END OF AddtoWatchList.js CSS*/
-/* END OF HOME CSS */
+/* ------------------------------------------------------------------ */
+/* f. Chart CSS
+/* ------------------------------------------------------------------ */
 
-/* START OF CHART HOME CSS */
 .chart {
   margin-top: 40px;
   height: 400px;
@@ -300,4 +318,3 @@ modalButton {
   overflow: auto;
   height: 100%;
 }
-/* END OF CHART CSS */
