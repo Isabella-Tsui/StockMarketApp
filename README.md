@@ -8,11 +8,11 @@ MyStock is a stock market app that dynamically displays historical data charts, 
 
 ## Current Functionalities
 
-✔️ Displays the most current finanical data of a given stock
-✔️ Displays the most current company data of a given stock
-✔️ Visualize 2 months of worth of stock data through charts
-✔️ Add and remove watch lists
-✔️ Add and remove stocks from watch lists
+:✔: Displays the most current finanical data of a given stock
+:✔:Displays the most current company data of a given stock
+:✔: Visualize 2 months of worth of stock data through charts
+:✔: Add and remove watch lists
+:✔: Add and remove stocks from watch lists
 
 ## Future Improvements
 
@@ -23,5 +23,5 @@ MyStock is a stock market app that dynamically displays historical data charts, 
 
 ## Contributors
 
-- @iamfazal who assisted in depolying the sever
+- @iamfazal who assisted in depolying the server
 - @ecmartins who created the template of this web app
