@@ -1,8 +1,10 @@
 import React from "react";
 import { Card, Typography } from "antd";
 
-//This file contains the component which displays the stock
-//data in the watch list
+/*
+This file contains the component which displays the monetary
+and company data in the watch list 
+*/
 
 const ShowStockData = ({ data }) => {
   return (

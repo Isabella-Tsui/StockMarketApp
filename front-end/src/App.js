@@ -12,10 +12,9 @@ import WishList from "./pages/WatchList.js";
 import WatchList from "./pages/WishList.js";
 import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
-import NotFound from "./pages/NotFound";
 
-// This component establishes all the routes a user can take
-// within the web App.
+/* This component establishes all the routes a user can take
+ within the web App. */
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(
@@ -23,7 +22,6 @@ function App() {
   );
 
   useEffect(() => {
-    // Update the isAuthenticated state whenever sessionStorage changes
     setIsAuthenticated(sessionStorage.getItem("isAuthenticated") === "true");
   }, []);
 
@@ -57,8 +55,6 @@ function App() {
           path="/watchList"
           element={<WatchList isAuthenticated={isAuthenticated} />}
         />
-
-        {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
     </Router>
   );

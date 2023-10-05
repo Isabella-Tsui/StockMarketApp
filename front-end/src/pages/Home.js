@@ -12,9 +12,11 @@ import {
   addWatchListItem,
 } from "../utils/api-backend";
 
-//This file contains all the components for the home page.
-//The home page consists of a stock data display, company data
-//display, and a chart with all the stock data for the last year
+/*
+This file contains all the components for the home page.
+The home page consists of a stock data display, company data
+display, and a chart with all the stock data for the last year. 
+*/
 
 export default function Home({ isAuthenticated }) {
   const [quoteText, setQuoteText] = useState("AAPL"); //Default stock to be displayed
@@ -23,9 +25,11 @@ export default function Home({ isAuthenticated }) {
   const [modal2Open, setModal2Open] = useState(false);
   const [messageAPI, contextHolder] = message.useMessage();
 
-  // Function Name: addStockData
-  // Purpose: Add a new stock into the database
-  // Parameters: None
+  /*
+   Function Name: addStockData
+   Purpose: Add a new stock into the database
+   Parameters: None
+  */
 
   const addStockData = async () => {
     const data = {
@@ -41,9 +45,11 @@ export default function Home({ isAuthenticated }) {
     return stockID;
   };
 
-  // Function Name: addCompanyData
-  // Purpose: Add a new company data entry to the database
-  // Parameters: None
+  /* 
+   Function Name: addCompanyData
+   Purpose: Add a new company data entry to the database
+   Parameters: None
+  */
 
   const addCompanyData = async () => {
     const retrivedCompanyData = {
@@ -66,12 +72,14 @@ export default function Home({ isAuthenticated }) {
     return companyID;
   };
 
-  // Function Name: addStockToWatchList
-  // Purpose: Add a new US stock to a watch list
-  // Parameters: id - unqiue stock ticker symbol
+  /* 
+  Function Name: addStockToWatchList
+  Purpose: Add a new US stock to a watch list
+  Parameters: id - unqiue stock ticker symbol
+  */
 
   const addStockToWatchList = async (id) => {
-    const flag = sessionStorage.getItem("USStock", "true");
+    const flag = sessionStorage.getItem("USStock");
     if (flag !== "true") {
       messageAPI.error(
         "You can only add stocks from the US to your watch lists."
@@ -89,9 +97,11 @@ export default function Home({ isAuthenticated }) {
     }
   };
 
-  // Function Name: addWatchList
-  // Purpose: Add a new watch list entry
-  // Parameters: id (watch list id), stockID, companyID
+  /* 
+  Function Name: addWatchList
+  Purpose: Add a new watch list entry
+  Parameters: id (watch list id), stockID, companyID
+  */
 
   const addWatchList = async (id, stockID, companyID) => {
     const listData = {
@@ -106,9 +116,11 @@ export default function Home({ isAuthenticated }) {
     }
   };
 
-  //Here we are returning the stock data (left), company data (right),
-  //and the Modal which renders the component to create and add stocks
-  //to a watch list
+  /*
+  Here we are returning the stock data (left), company data (right),
+  and the Modal which renders the component to create and add stocks
+  to a watch list.
+  */
 
   return (
     <>

@@ -5,23 +5,37 @@ import { handleSearch } from "../utils/apicall";
 import styles from "../pages/Home.module.css";
 import Suggestions from "./Suggestions";
 
-//This file contains the component which renders
-//the stock search bar.
+/*
+This file contains the component which renders the search bar. 
+*/
 
 const Input = ({ setQuoteText }) => {
   const [input, setInput] = useState("");
   const [results, setResults] = useState([]);
 
-  // Function Name: handleCancel
-  // Purpose: Reset search bar
-  // Parameters: None
+  /* 
+    Function Name: handleCancel
+    Purpose: Reset search bar
+    Parameters: None
+  */
 
   const handleCancel = () => {
     setInput("");
     setResults([]);
   };
 
-  //Returns a list with the search results
+  /* 
+    Function Name: handleKeyPress
+    Purpose: Handle user input
+    Parameters: e
+  */
+
+  const handleKeyPress = async (e) => {
+    if (e.key === "Enter") {
+      const data = await handleSearch(input);
+      setResults(data);
+    }
+  };
 
   return (
     <>
@@ -34,6 +48,7 @@ const Input = ({ setQuoteText }) => {
             setInput(e.target.value);
             if (e.target.value === "") setResults([]);
           }}
+          onKeyDown={handleKeyPress}
         />
 
         {input !== "" && (

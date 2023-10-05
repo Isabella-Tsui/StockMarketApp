@@ -13,18 +13,24 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-// Function Name: convertUnixTimestampToDate
-// Purpose: Convert time into unix stamp
-// Parameters: unixTimestamp
+/*This file contains the component that renders the historical data chart */
+
+/*
+Function Name: convertUnixTimestampToDate
+Purpose: Convert time into unix stamp
+Parameters: unixTimestamp
+*/
 
 const convertUnixTimestampToDate = (unixTimestamp) => {
   const milliseconds = unixTimestamp * 1000;
   return new Date(milliseconds).toLocaleDateString();
 };
 
-// Function Name: formatData
-// Purpose: Take many arrays and turn them into data points
-// Parameters: data
+/*
+Function Name: formatData
+Purpose: Take many arrays and turn them into data points
+Parameters: data
+*/
 
 const formatData = (data) => {
   return data.c.map((item, index) => {
@@ -37,9 +43,6 @@ const formatData = (data) => {
     };
   });
 };
-
-//This file contains the component that renders the
-//historical data chart
 
 const Chart = ({ quoteText }) => {
   const [historicalData, setHistoricalData] = useState([]);
@@ -64,8 +67,8 @@ const Chart = ({ quoteText }) => {
     fetchData();
   }, [quoteText]);
 
-  //If the stock is not from the US display and error message
-  //otherwise display the chart
+  //If the stock is not from the US, display an error message.
+  //Otherwis, display the chart.
   if (!USAStock || USAStock.country !== "US") {
     return (
       <Card className={styles.chartNoAccess}>
@@ -75,8 +78,6 @@ const Chart = ({ quoteText }) => {
       </Card>
     );
   }
-
-  //Return the chart
 
   return (
     <div className={styles.chartContainer}>

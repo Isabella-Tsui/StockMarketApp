@@ -8,8 +8,8 @@ import {
   removeWatchListFromWatchLists,
 } from "../utils/api-backend";
 
-//This file contains the component which renders all the watch lists
-//under a certain user
+/*This file contains the component which renders all the watch lists
+under a certain user*/
 
 export default function WatchList({ isAuthenticated }) {
   const userId = sessionStorage.getItem("userID");
@@ -26,16 +26,17 @@ export default function WatchList({ isAuthenticated }) {
       setLoading(false);
     };
 
-    // Set timmer so that if the API reponse is fast the transition
-    // is not jarring to the user
+    // Set a timmer so that if the API reponse is very fast
+    // the transition is not jarring to the user
     setTimeout(watchListItems, 1000);
     setWatchListRemoved(false);
   }, [watchListRemoved, userId]);
 
-  // Function Name: handleRemoveWatchlist
-  // Purpose: Deletes a watch list and all the stocks associated
-  // with it
-  // Parameters: watchlistID
+  /* 
+  Function Name: handleRemoveWatchlist
+  Purpose: Deletes a watch list and all the stocks associated with it
+  Parameters: watchlistID 
+  */
 
   const handleRemoveWatchlist = async (watchlistID) => {
     try {
@@ -60,8 +61,8 @@ export default function WatchList({ isAuthenticated }) {
       </>
     );
 
-  //Check is a user has watch lists, if they don't return a message
-  //otherwise display all their lists
+  //Check is a user has watch lists, if they don't return a message.
+  //Otherwise, display all their lists.
 
   if (watchList === undefined || watchList.length === 0) {
     return (
@@ -72,10 +73,6 @@ export default function WatchList({ isAuthenticated }) {
       </div>
     );
   }
-
-  //If the user clicks the eye they will be taken to the component which
-  //renders all the stocks in that list. Otherwise, they have the option
-  //to delete the whole list.
 
   return (
     <>
@@ -91,7 +88,6 @@ export default function WatchList({ isAuthenticated }) {
               margin: "16px 0",
               boxShadow: "0 4px 8px 0 rgba(0,0,0,0.1)",
               height: "2px",
-              // black color
               backgroundColor: "#000000",
             }}
           />

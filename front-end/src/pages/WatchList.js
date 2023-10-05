@@ -9,10 +9,8 @@ import {
 } from "../utils/api-backend";
 import ShowStockData from "./ShowStockData";
 
-//This file contains the component which renders all the stocks
-//in a watch list
-
-//Previously used get all stocks here
+/*This file contains the component which renders all the stocks
+in a watch list*/
 
 export default function WishList({ isAuthenticated }) {
   const { id } = useParams();
@@ -32,14 +30,15 @@ export default function WishList({ isAuthenticated }) {
 
     // Set timmer so that if the API reponse is fast the transition
     // is not jarring to the user
-
     setTimeout(watchListStocks, 1000);
     setStockRemoved(true);
   }, [stockRemoved, id]);
 
-  // Function Name: handleRemoveStock
-  // Purpose: Deletes a stock from the watch list
-  // Parameters: stockID
+  /* 
+  Function Name: handleRemoveStock
+  Purpose: Deletes a stock from the watch list
+  Parameters: stockID 
+  */
 
   const handleRemoveStock = async (stockID) => {
     try {
@@ -65,8 +64,8 @@ export default function WishList({ isAuthenticated }) {
       </>
     );
 
-  //Check is the watch lists has stocks. If they don't, return a message,
-  //otherwise, display all their stocks.
+  //Checks if the watch lists has stocks. If there are no stocks return a
+  //message. Otherwise, display all their stocks.
   if (stocks === undefined || stocks.length === 0) {
     return (
       <div className={styles.home}>
@@ -77,9 +76,11 @@ export default function WishList({ isAuthenticated }) {
     );
   }
 
-  //If the user clicks the eye they will be taken to the component which
-  //renders all the stock information. Otherwise, they have the option
-  //to remove the stock.
+  /* 
+  If the user clicks the eye they will be taken to the component which
+  renders all the stock information. Otherwise, they have the option
+  to remove the stock. 
+  */
 
   return (
     <>

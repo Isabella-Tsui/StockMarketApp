@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import InputField from "./InputField";
+import React, { useState, useRef } from "react";
+import InputField, { inputRef } from "./InputField";
 import SubmitButton from "./SubmitButton";
 import { useNavigate } from "react-router-dom";
 import "./Authentication.css";
@@ -14,10 +14,14 @@ const LoginForm = ({ setIsAuthenticated }) => {
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [loginError, setLoginError] = useState("");
   const navigate = useNavigate();
+  const usernameInputRef = useRef(null);
+  const passwordInputRef = useRef(null);
 
-  // Function Name: handleUsernameChange, handlePasswordChange
-  // Purpose: Handle user input
-  // Parameters: e - user input
+  /* 
+  Function Name: handleUsernameChange, handlePasswordChange
+  Purpose: Handle user input
+  Parameters: e - user input
+  */
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -27,9 +31,11 @@ const LoginForm = ({ setIsAuthenticated }) => {
     setPassword(e.target.value);
   };
 
-  // Function Name: resetLoginForm
-  // Purpose: Reset the login form
-  // Parameters: None
+  /*
+  Function Name: resetLoginForm
+  Purpose: Reset the login form
+  Parameters: None
+  */
 
   const resetLoginForm = () => {
     setUsername("");
@@ -37,11 +43,13 @@ const LoginForm = ({ setIsAuthenticated }) => {
     setButtonDisabled(false);
   };
 
-  // Function Name: doLogin
-  // Purpose: Handles authentication by ensuring
-  //the password and username are correct and if they are
-  //navigates a user to the home page
-  // Parameters: None
+  /* 
+  Function Name: doLogin
+  Purpose: Handles authentication by ensuring
+  the password and username are correct and if they are,
+  navigates a user to the home page
+  Parameters: None
+  */
 
   const doLogin = async () => {
     if (!username || !password) return;
@@ -77,8 +85,6 @@ const LoginForm = ({ setIsAuthenticated }) => {
     }
   };
 
-  //Returns the login form
-
   return (
     <div className="authentication-form-container">
       <div className="authentication-form">
@@ -89,12 +95,14 @@ const LoginForm = ({ setIsAuthenticated }) => {
           placeholder="Username"
           value={username}
           onChange={handleUsernameChange}
+          onEnter={doLogin}
         />
         <InputField
           type="password"
           placeholder="Password"
           value={password}
           onChange={handlePasswordChange}
+          onEnter={doLogin}
         />
         {loginError && <div className="authentication-error">{loginError}</div>}
         <SubmitButton
